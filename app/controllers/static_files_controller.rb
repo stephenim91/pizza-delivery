@@ -1,0 +1,2 @@
+class StaticFilesController < ApplicationController
+end

@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import MainIndex from '../react/containers/mainIndex'
+import MainIndex from '../react/src/containers/mainIndex'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

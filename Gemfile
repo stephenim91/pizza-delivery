@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem 'webpacker', '~> 3.0'
-gem 'foundation-rails'
 gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'

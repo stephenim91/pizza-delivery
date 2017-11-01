@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
 import 'foundation-sites'
+import SearchBar from './searchBar'
 
 
 class MainIndex extends Component {
@@ -18,6 +19,7 @@ class MainIndex extends Component {
   render() {
     return(
       <div>
+        <SearchBar />
         <div class="row">
           <div class="columns">
             <h2>Accordion</h2>

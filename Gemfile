@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'webpacker', '~> 3.0'
+gem 'turbolinks', '~> 5.0.0'
+gem 'jquery-rails'
 gem 'foundation-rails'
 gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'

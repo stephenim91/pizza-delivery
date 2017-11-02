@@ -10,5 +10,7 @@
 
   <body>
     <%= yield %>
+    <% api_source = "https://maps.googleapis.com/maps/api/js?key=#{ENV.fetch('GOOGLE_MAPS_API')}&libraries=places" %>
+    <script type="text/javascript" src=<%= api_source %>></script>
   </body>
 </html>

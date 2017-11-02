@@ -1,7 +1,25 @@
 .search-section-landing-page {
-  background-image: url(background.jpg)
+  background-image: url(background.jpg);
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .search-section-top-spacer {
+  height: 10rem;
+}
 
+.address-search-bar {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.button.address-search-bar {
+  float: right;
+  margin-right: 0;
+  margin-top: -3.47rem;
+  position: relative;
+}
+
+.search-section-bottom-spacer {
+  height: 15rem;
 }

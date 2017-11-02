@@ -17,8 +17,9 @@ class LandingPage extends Component {
         <h1 className="header-landing-page">Pizza Delivery!</h1>
 
         <div className="search-section-landing-page">
-          <div className="search-section-top-spacer">oij</div>
+          <div className="search-section-top-spacer"></div>
           <SearchBar />
+          <div className="search-section-bottom-spacer"></div>
         </div>
 
         <div className="explanation-landing-page">

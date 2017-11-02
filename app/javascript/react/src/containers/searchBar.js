@@ -38,9 +38,10 @@ class SearchBar extends Component {
     }
 
     return(
-        <form>
+        <form className="address-search-bar">
+          Enter your address
           <PlacesAutocomplete inputProps={inputProps} />
-          <NavLink onClick={this.handleSubmit} className="button" type="submit" to='/restaurants'>Search</NavLink>
+          <NavLink onClick={this.handleSubmit} className="button address-search-bar" type="submit" to='/restaurants'>Search</NavLink>
         </form>
 
     )

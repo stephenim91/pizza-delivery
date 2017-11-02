@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
 import 'foundation-sites'
-import PlacesAutocomplete from 'react-places-autocomplete'
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+import { NavLink } from 'react-router-dom'
+
 
 
 class SearchBar extends Component {
@@ -23,8 +25,6 @@ class SearchBar extends Component {
   }
 
   handleSubmit = (event) => {
-    event.preventDefault()
-
     geocodeByAddress(this.state.address)
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log('Success', latLng))
@@ -38,10 +38,11 @@ class SearchBar extends Component {
     }
 
     return(
-      <form onSubmit={this.handleSubmit}>
-        <PlacesAutocomplete inputProps={inputProps} />
-        <button type="submit">Search</button>
-      </form>
+        <form>
+          <PlacesAutocomplete inputProps={inputProps} />
+          <NavLink onClick={this.handleSubmit} className="button" type="submit" to='/restaurants'>Search</NavLink>
+        </form>
+
     )
   }
 }

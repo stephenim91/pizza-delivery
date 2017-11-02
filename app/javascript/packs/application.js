@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import MainIndex from '../react/src/containers/mainIndex'
+import PizzaDelivery from '../react/src/pizzaDelivery'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <MainIndex />,
+    <PizzaDelivery />,
     document.body.appendChild(document.createElement('div')),
   )
 })

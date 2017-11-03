@@ -25,6 +25,7 @@ class SearchBar extends Component {
   }
 
   handleSubmit = (event) => {
+  //fetch post
     geocodeByAddress(this.state.address)
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log('Success', latLng))
@@ -38,9 +39,10 @@ class SearchBar extends Component {
     }
 
     return(
-        <form>
+        <form className="address-search-bar">
+          <p className="address-search-bar-label">Enter your address</p>
           <PlacesAutocomplete inputProps={inputProps} />
-          <NavLink onClick={this.handleSubmit} className="button" type="submit" to='/restaurants'>Search</NavLink>
+          <NavLink onClick={this.handleSubmit} className="button address-search-bar" type="submit" to='/restaurants'>Search</NavLink>
         </form>
 
     )

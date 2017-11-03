@@ -1,7 +1,37 @@
 .search-section-landing-page {
-  background-image: url(background.jpg)
+  background-image: url(background.jpg);
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .search-section-top-spacer {
+  height: 10rem;
+}
 
+.address-search-bar {
+  margin-left: 5rem;
+  margin-right: 5rem;
+  position: sticky;
+}
+
+.button.address-search-bar {
+  float: right;
+  margin-right: 0;
+  margin-top: -3.47rem;
+  position: relative;
+  background: #FF8544;
+}
+
+.button.address-search-bar:active {
+  background: #A96607;
+}
+
+.address-search-bar-label {
+  color: #FFFFFF;
+  margin-bottom: 0rem;
+  text-shadow: 1px 1px #000000;
+}
+
+.search-section-bottom-spacer {
+  height: 15rem;
 }

@@ -10,7 +10,8 @@ class SearchBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      address: ''
+      address: '',
+      geocode: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,11 +26,19 @@ class SearchBar extends Component {
   }
 
   handleSubmit = (event) => {
-  //fetch post
     geocodeByAddress(this.state.address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
+      .then(latLng => {
+        console.log('Success', latLng);
+        fetch(`/api/v1/addresses.json`, {
+          method: "POST",
+          body: JSON.stringify({longform_address: this.state.address, latitude: latLng.lat, longitude: latLng.lng}),
+          credentials: "same-origin",
+          headers: {"Content-Type": "application/json"}
+        })
+      })
       .catch(error => console.error('Error', error))
+
   }
 
   render() {

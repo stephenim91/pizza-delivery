@@ -1,59 +1,65 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
-import SearchBar from './searchBar'
+import RestaurantTile from '../components/restaurantTile'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 
 class RestaurantsIndex extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      longform_address: '',
+      latitude: '',
+      longitude: '',
+      restaurants: [{logoUrl: '', name: '', apiKey: ''}]
     }
   }
 
+  componentDidMount() {
+    $(document).foundation();
+    setTimeout(this.fetchAddress.bind(this), 3000);
+    setTimeout(this.fetchRestaurants.bind(this), 5000);
+  }
+
+  fetchAddress() {
+    fetch(`/api/v1/addresses.json`,
+      {credentials: "same-origin",
+      headers: {"Content-Type": "application/json"}})
+      .then(response => response.json())
+      .then(body => {
+        this.setState({
+          longform_address: body.longform_address,
+          latitude: body.latitude,
+          longitude: body.longitude
+      })
+    })
+  }
+
+  fetchRestaurants() {
+    let token = process.env.REACT_APP_EAT_STREET_TOKEN
+    fetch(`https://api.eatstreet.com/publicapi/v1/restaurant/search?latitude=${this.state.latitude}&longitude=${this.state.longitude}&method=delivery&search=pizza&access-token=${token}`)
+      .then(response => response.json())
+      .then(body => {
+        this.setState({ restaurants: body.restaurants })
+      })
+  }
 
   render() {
+    let restaurants = this.state.restaurants.map(restaurant => {
+      return(
+        <RestaurantTile
+          key={restaurant.apiKey}
+          logoUrl={restaurant.logoUrl}
+          name={restaurant.name}
+          apiKey={restaurant.apiKey} />
+      )
+    })
+
     return(
       <div>
 
-        <div>
-          <SearchBar />
-        </div>
+          {restaurants}
 
-        <div className="row">
-          <div className="columns">
-            <h2>Accordion</h2>
-            <p>Accordions lets you organize and navigate multiple documents in a single container. Highly useful for switching between items in the container specially when you have a large amount of content.</p>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="columns">
-            <ul className="accordion" data-accordion>
-          <li className="accordion-item is-active" data-accordion-item>
-            <a href="#" className="accordion-title">Accordion 1</a>
-            <div className="accordion-content" data-tab-content >
-              <p>Panel 1. Lorem ipsum dolor</p>
-              <a href="#">Nowhere to Go</a>
-            </div>
-          </li>
-          <li className="accordion-item" data-accordion-item>
-            <a href="#" className="accordion-title">Accordion 2</a>
-            <div className="accordion-content" data-tab-content>
-              <textarea></textarea>
-              <button className="button">I do nothing!</button>
-            </div>
-          </li>
-          <li className="accordion-item" data-accordion-item>
-            <a href="#" className="accordion-title">Accordion 3</a>
-            <div className="accordion-content" data-tab-content>
-              Type your name!
-              <input type="text"></input>
-            </div>
-          </li>
-        </ul>
-          </div>
-        </div>
       </div>
     )
   }

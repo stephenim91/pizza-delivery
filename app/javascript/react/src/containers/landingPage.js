@@ -14,8 +14,6 @@ class LandingPage extends Component {
   render() {
     return(
       <div>
-        <h1 className="header-landing-page">Pizza Delivery!</h1>
-
         <div className="search-section-landing-page">
           <div className="search-section-top-spacer"></div>
           <SearchBar />
@@ -24,6 +22,14 @@ class LandingPage extends Component {
 
         <div className="explanation-landing-page">
           <p>We take pizza out of the ovens of nearby restaurants and into you mouth!<br /><i>-Thomas Jefferson</i></p>
+          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
+          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
+          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
+          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
+          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
+          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
+          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
+          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
         </div>
       </div>
     )

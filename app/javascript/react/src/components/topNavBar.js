@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import $ from 'jquery'
-import 'foundation-sites'
+// import $ from 'jquery'
+// import 'foundation-sites'
 
 
 class TopNavBar extends Component {
@@ -11,7 +11,7 @@ class TopNavBar extends Component {
     }
   }
   componentDidMount() {
-    $(document).foundation();
+    // $(document).foundation();
   }
 
   render() {

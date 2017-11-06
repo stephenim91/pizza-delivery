@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import $ from 'jquery'
+// import $ from 'jquery'
 
 
 class restaurantShow extends Component {
@@ -10,7 +10,7 @@ class restaurantShow extends Component {
     }
   }
   componentDidMount() {
-    $(document).foundation();
+    // $(document).foundation();
     setTimeout(this.fetchRestaurant.bind(this), 3000);
   }
 

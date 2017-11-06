@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-import $ from 'jquery'
 import { NavLink } from 'react-router-dom'
-import 'foundation-sites'
-
-
 
 
 class RestaurantTile extends Component {
@@ -15,7 +11,7 @@ class RestaurantTile extends Component {
   }
 
   componentDidMount() {
-    $(document).foundation();
+    // $(document).foundation();
   }
 
   render() {

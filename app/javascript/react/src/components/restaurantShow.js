@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import RestaurantShowSubmenu from './RestaurantShowSubmenu'
-import $ from 'jquery'
-// import 'foundation-sites'
 
 
 
@@ -14,7 +12,7 @@ class RestaurantShow extends Component {
     }
   }
   componentDidMount() {
-    $(document).foundation();
+    // $(document).foundation();
     setTimeout(this.fetchRestaurant.bind(this), 3000);
   }
   // componentDidUpdate() {

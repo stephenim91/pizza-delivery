@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import $ from 'jquery'
-import 'foundation-sites'
 
 
 class RestaurantShowSubmenu extends Component {
@@ -12,7 +10,7 @@ class RestaurantShowSubmenu extends Component {
     this.handleActivity = this.handleActivity.bind(this);
   }
   componentDidMount() {
-    $(document).foundation();
+    // $(document).foundation();
   }
 
   handleActivity(event) {

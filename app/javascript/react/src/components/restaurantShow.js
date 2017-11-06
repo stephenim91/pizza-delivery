@@ -9,7 +9,7 @@ class RestaurantShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      menu: [{items: {name: '', description: '', apiKey: ''}}]
+      menu: [{key: 'static', name: '', items: [{name: '', description: '', apiKey: ''}]}]
     }
   }
   componentDidMount() {
@@ -53,30 +53,15 @@ class RestaurantShow extends Component {
           items={submenu.items} />
       )
     })
-    debugger;
     return(
       <div>
-
+        <h2>Menu</h2>
         <div className="row">
-          <h2>Menu</h2>
-        </div>
-
-        <div className="row">
-          <div className="columns">
-            <ul className="accordion" data-accordion>
-
-              {products}
-
-
-              <li className="accordion-item" data-accordion-item>
-                <a href="#" className="accordion-title">Accordion 3</a>
-                <div className="accordion-content" data-tab-content>
-                  Type your name!
-                  <input type="text"></input>
-                </div>
-              </li>
-
-            </ul>
+          <div className="small-6 column">
+            Restaurant description<br/>Restaurant Reviews and ratings<br />popout form to add rating
+          </div>
+          <div className="small-6 column">
+            {products}
           </div>
         </div>
       </div>

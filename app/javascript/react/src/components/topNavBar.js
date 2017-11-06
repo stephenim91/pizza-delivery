@@ -17,7 +17,7 @@ class TopNavBar extends Component {
     return(
       <div data-sticky-container>
     <div className="title-bar nav-bar" data-sticky data-options="marginTop:0;">
-      <span className="title-bar-title nav-bar">Pizza Delivery!</span>
+      <span><a className="title-bar-title nav-bar" href='/'>Pizza Delivery!</a></span>
       <div className="title-bar-right">
         <ul className="dropdown menu align-right" data-dropdown-menu>
           <li>

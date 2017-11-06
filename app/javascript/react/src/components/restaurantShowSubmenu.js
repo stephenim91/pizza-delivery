@@ -25,18 +25,33 @@ class RestaurantShowSubmenu extends Component {
 
   render() {
     let activity = ''
+    let items = null
     if (this.state.active) {
-      activity = 'menu is-active'
+      items = this.props.items.map(item => {
+        return(
+          <RestaurantShowSubmenuItem
+            key={item.apiKey}
+            name={item.name}
+            description={item.description} />
+        )
+      })
     }
+
     return(
-      <li className="accordion-item" data-accordion-item>
-        <a onClick={this.handleActivity} href="#" className="accordion-title">{this.props.name}</a>
-        <div className="accordion-content" data-tab-content>
-          <p>{this.props.name}</p>
+      <div className="submenu">
+        <h4 onClick={this.handleActivity} className="submenu-title">{this.props.name}</h4>
+        <div className="submenu-content">
+          {items}
         </div>
-      </li>
+      </div>
     )
   }
+}
+
+const RestaurantShowSubmenuItem = props => {
+  return(
+    <p><strong>{props.name}</strong>{props.description}</p>
+  )
 }
 
 export default RestaurantShowSubmenu

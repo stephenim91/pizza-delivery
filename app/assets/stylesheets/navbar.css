@@ -1,6 +1,8 @@
 .title-bar-title.nav-bar {
   font-family: 'Cabin Sketch';
   font-size: 2rem;
+  text-decoration: none;
+  color: white;
 }
 
 .title-bar.nav-bar {

@@ -1,74 +1,82 @@
 import React, { Component } from 'react'
+import RestaurantShowSubmenu from './RestaurantShowSubmenu'
 // import $ from 'jquery'
 
 
-class restaurantShow extends Component {
+
+
+class RestaurantShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      items: [{name: '', description: ''}]
+      menu: [{items: {name: '', description: '', apiKey: ''}}]
     }
   }
   componentDidMount() {
     // $(document).foundation();
     setTimeout(this.fetchRestaurant.bind(this), 3000);
   }
+  // componentDidUpdate() {
+  //   $(document).foundation();
+  // }
 
 
   fetchRestaurant() {
     let token = process.env.REACT_APP_EAT_STREET_TOKEN
-    fetch(`https://api.eatstreet.com/publicapi/v1/restaurant/e5ea15352cbcd4db884225aec137a02aacf5e7ab757ff906/menu?includeCustomizations=false&access-token=${token}`)
+    let restaurantId = this.props.match.params.id
+    fetch(`https://api.eatstreet.com/publicapi/v1/restaurant/${restaurantId}/menu?includeCustomizations=false&access-token=${token}`)
       .then(response => response.json())
       .then(body => {
-        let s = body[2].items
-        this.setState({ items: s })
+        let menu = body
+        this.setState({ menu: menu })
       })
   }
 
-
+  // let submenuItems = submenu.items.map(item => {
+  //   return(
+  //     <p><strong>{item.name}</strong>{item.description}</p>
+  //   )
+  // })
+  //
+  // <li className="accordion-item" data-accordion-item>
+  //   <a href="#" className="accordion-title">{submenu.name}</a>
+  //   <div className="accordion-content" data-tab-content>
+  //     <p>{this.props.name}</p>
+  //   </div>
+  // </li>
   render() {
-    let items = this.state.items.map(item => {
+    let products = this.state.menu.map(submenu => {
       return(
-        <p><strong>{item.name}</strong>{item.description}</p>
+        <RestaurantShowSubmenu
+          key={submenu.apiKey}
+          name={submenu.name}
+          items={submenu.items} />
       )
-
-
     })
+    debugger;
     return(
       <div>
 
         <div className="row">
-          <div className="columns">
-            <h2>Accordion</h2>
-            <p>Accordions lets you organize and navigate multiple documents in a single container. Highly useful for switching between items in the container specially when you have a large amount of content.</p>
-          </div>
+          <h2>Menu</h2>
         </div>
 
         <div className="row">
           <div className="columns">
             <ul className="accordion" data-accordion>
-          <li className="accordion-item is-active" data-accordion-item>
-            <a href="#" className="accordion-title">Accordion 1</a>
-            <div className="accordion-content" data-tab-content >
-              {items}
-              <a href="#">Nowhere to Go</a>
-            </div>
-          </li>
-          <li className="accordion-item" data-accordion-item>
-            <a href="#" className="accordion-title">Accordion 2</a>
-            <div className="accordion-content" data-tab-content>
-              <textarea></textarea>
-              <button className="button">I do nothing!</button>
-            </div>
-          </li>
-          <li className="accordion-item" data-accordion-item>
-            <a href="#" className="accordion-title">Accordion 3</a>
-            <div className="accordion-content" data-tab-content>
-              Type your name!
-              <input type="text"></input>
-            </div>
-          </li>
-        </ul>
+
+              {products}
+
+
+              <li className="accordion-item" data-accordion-item>
+                <a href="#" className="accordion-title">Accordion 3</a>
+                <div className="accordion-content" data-tab-content>
+                  Type your name!
+                  <input type="text"></input>
+                </div>
+              </li>
+
+            </ul>
           </div>
         </div>
       </div>
@@ -76,4 +84,4 @@ class restaurantShow extends Component {
   }
 }
 
-export default restaurantShow
+export default RestaurantShow

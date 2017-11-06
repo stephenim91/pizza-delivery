@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 // import $ from 'jquery'
 // import 'foundation-sites'
 
-
 class TopNavBar extends Component {
   constructor(props) {
     super(props)

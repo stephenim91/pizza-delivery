@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 // import $ from 'jquery'
 import { NavLink } from 'react-router-dom'
 // import 'foundation-sites'
-
 
 
 
@@ -23,10 +23,10 @@ class RestaurantTile extends Component {
       <div>
         <div className="grid-x restaurant-tile">
           <div className="small-6 large-3 cell">
-            <NavLink to={`/restaurants/${this.props.apiKey}`}>{this.props.name}</NavLink>
+            <img src={this.props.logoUrl}></img>
           </div>
           <div className="small-6 large-3 cell">
-            <img src={this.props.logoUrl}></img>
+            <NavLink to={`/restaurants/${this.props.apiKey}`}>{this.props.name}</NavLink>
           </div>
         </div>
       </div>

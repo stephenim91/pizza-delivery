@@ -17,9 +17,9 @@ class RestaurantShow extends Component {
     $(document).foundation();
     setTimeout(this.fetchRestaurant.bind(this), 3000);
   }
-  componentDidUpdate() {
-    $(document).foundation();
-  }
+  // componentDidUpdate() {
+  //   $(document).foundation();
+  // }
 
 
   fetchRestaurant() {
@@ -39,21 +39,22 @@ class RestaurantShow extends Component {
   //   )
   // })
   //
-  // <RestaurantShowSubmenu
-  //   key={submenu.apiKey}
-  //   name={submenu.name}
-  //   items={submenu.items} />
+  // <li className="accordion-item" data-accordion-item>
+  //   <a href="#" className="accordion-title">{submenu.name}</a>
+  //   <div className="accordion-content" data-tab-content>
+  //     <p>{this.props.name}</p>
+  //   </div>
+  // </li>
   render() {
     let products = this.state.menu.map(submenu => {
       return(
-        <li className="accordion-item" data-accordion-item>
-          <a href="#" className="accordion-title">{submenu.name}</a>
-          <div className="accordion-content" data-tab-content>
-            <p>{this.props.name}</p>
-          </div>
-        </li>
+        <RestaurantShowSubmenu
+          key={submenu.apiKey}
+          name={submenu.name}
+          items={submenu.items} />
       )
     })
+    debugger;
     return(
       <div>
 
@@ -66,46 +67,7 @@ class RestaurantShow extends Component {
             <ul className="accordion" data-accordion>
 
               {products}
-              <li className="accordion-item" data-accordion-item>
-                <a href="#" className="accordion-title">Accordion 2</a>
-                <div className="accordion-content" data-tab-content>
-                  <textarea></textarea>
-                  <button className="button">I do nothing!</button>
-                </div>
-              </li>
 
-              <li className="accordion-item" data-accordion-item>
-                <a href="#" className="accordion-title">Accordion 2</a>
-                <div className="accordion-content" data-tab-content>
-                  <textarea></textarea>
-                  <button className="button">I do nothing!</button>
-                </div>
-              </li>
-
-              <li className="accordion-item" data-accordion-item>
-                <a href="#" className="accordion-title">Accordion 2</a>
-                <div className="accordion-content" data-tab-content>
-                  <textarea></textarea>
-                  <button className="button">I do nothing!</button>
-                </div>
-              </li>
-
-              <li className="accordion-item" data-accordion-item>
-                <a href="#" className="accordion-title">Accordion 2</a>
-                <div className="accordion-content" data-tab-content>
-                  <textarea></textarea>
-                  <button className="button">I do nothing!</button>
-                </div>
-              </li>
-
-
-              <li className="accordion-item" data-accordion-item>
-                <a href="#" className="accordion-title">Accordion 2</a>
-                <div className="accordion-content" data-tab-content>
-                  <textarea></textarea>
-                  <button className="button">I do nothing!</button>
-                </div>
-              </li>
 
               <li className="accordion-item" data-accordion-item>
                 <a href="#" className="accordion-title">Accordion 3</a>

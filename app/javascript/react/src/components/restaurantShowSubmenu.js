@@ -15,7 +15,8 @@ class RestaurantShowSubmenu extends Component {
     $(document).foundation();
   }
 
-  handleActivity() {
+  handleActivity(event) {
+    event.preventDefault;
     if(this.state.active) {
       this.setState({ active: false })
     } else {
@@ -27,11 +28,11 @@ class RestaurantShowSubmenu extends Component {
   render() {
     let activity = ''
     if (this.state.active) {
-      activity = 'is-active'
+      activity = 'menu is-active'
     }
     return(
       <li className="accordion-item" data-accordion-item>
-        <a href="#" className="accordion-title">{this.props.name}</a>
+        <a onClick={this.handleActivity} href="#" className="accordion-title">{this.props.name}</a>
         <div className="accordion-content" data-tab-content>
           <p>{this.props.name}</p>
         </div>

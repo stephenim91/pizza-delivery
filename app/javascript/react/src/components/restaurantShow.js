@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import RestaurantShowSubmenu from './RestaurantShowSubmenu'
+import RestaurantShowSubmenu from './restaurantShowSubmenu'
 // import $ from 'jquery'
 
 

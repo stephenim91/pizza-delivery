@@ -50,7 +50,18 @@ class RestaurantShowSubmenu extends Component {
 
 const RestaurantShowSubmenuItem = props => {
   return(
-    <p><strong>{props.name}</strong>{props.description}</p>
+    <label className="submenu-tile">
+      <span>
+        &nbsp;<strong>{props.name}</strong><br/>{props.description}
+      </span>
+      <label>
+        <span>Special instructions: </span>
+        <input type="textbox" />
+        <div className="submenu-button button" type="submit">Add to cart</div>
+      </label>
+
+    </label>
+
   )
 }
 

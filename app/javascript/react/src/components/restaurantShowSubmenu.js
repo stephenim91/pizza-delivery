@@ -69,6 +69,13 @@ class RestaurantShowSubmenuItem extends Component {
   handleAdd(event) {
     event.preventDefault;
     let payload = {instruction: this.state.instruction, name: this.props.name, price: this.props.price, quantity: this.state.quantity, restaurant: this.props.restaurantApiKey}
+    fetch(`/api/v1/orders.json`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      credentials: "same-origin",
+      headers: {"Content-Type": "application/json"}
+    })
+    this.setState({ instruction: '', quantity: 1 })
   }
 
   render() {

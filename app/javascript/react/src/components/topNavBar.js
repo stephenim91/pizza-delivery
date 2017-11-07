@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 // import $ from 'jquery'
 // import 'foundation-sites'
+import { Redirect } from 'react-router-dom'
+
 
 class TopNavBar extends Component {
   constructor(props) {
@@ -20,7 +22,7 @@ class TopNavBar extends Component {
         <a href='/' className="nav-bar-title">Pizza Delivery!</a>
       </span>
 
-      <span className="fa fa-lg fa-shopping-cart nav-bar-checkout"></span>
+      <a href='/checkout/' className="fa fa-lg fa-shopping-cart nav-bar-checkout"></a>
 
 
     </div>

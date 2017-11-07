@@ -22,7 +22,6 @@ class RestaurantsIndex extends Component {
   render() {
     return(
       <div>
-
         <p>checkout</p>
         <p>1 Potato, Bacon, Green Onion and Ranch Pizza </p>
         <p>to 41 Mt Vernon St, Cambridge, MA, USA</p>

@@ -57,8 +57,8 @@ class RestaurantsIndex extends Component {
 
     return(
       <div>
-
-          {restaurants}
+        <div className="index-page-nav-bar-buffer"></div>
+        {restaurants}
 
       </div>
     )

@@ -64,6 +64,7 @@ class RestaurantShow extends Component {
 
     return(
       <div>
+        <div className="show-page-nav-bar-buffer"></div>
         <div className="row">
           <div className="small-6 column">
             <div className="row">

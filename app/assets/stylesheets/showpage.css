@@ -10,3 +10,7 @@
 .submenu-button.button {
   background: #FF8544;
 }
+
+.show-page-nav-bar-buffer {
+  height: 3rem;
+}

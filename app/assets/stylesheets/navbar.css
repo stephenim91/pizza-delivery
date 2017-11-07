@@ -6,11 +6,11 @@
 }
 
 .nav-bar-title:hover {
-  color: black;
+  color: #00C622;
 }
 
 .nav-bar {
-  background: #A96607;
+  background: #FF8544;
   position: fixed;
   z-index: 1000;
   width: 100%;
@@ -25,5 +25,5 @@
 }
 
 .nav-bar-checkout:hover {
-  color: black;
+  color: #00C622;
 }

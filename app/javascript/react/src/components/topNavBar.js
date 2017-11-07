@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 // import $ from 'jquery'
 // import 'foundation-sites'
+import { Redirect } from 'react-router-dom'
+
 
 class TopNavBar extends Component {
   constructor(props) {
@@ -15,27 +17,15 @@ class TopNavBar extends Component {
 
   render() {
     return(
-      <div data-sticky-container>
-    <div className="title-bar nav-bar" data-sticky data-options="marginTop:0;">
-      <span><a href='/' className="title-bar-title nav-bar">Pizza Delivery!</a></span>
-      <div className="title-bar-right">
-        <ul className="dropdown menu align-right" data-dropdown-menu>
-          <li>
-            <a>Item 1</a>
-            <ul className="menu">
-              <li><a href="#">Item 1A</a></li>
-              <li>
-                <a href="#">Item 1B</a>
-              </li>
-              <li><a href="/checkout">Item 1C</a></li>
-            </ul>
-          </li>
-        </ul>
+    <div className="nav-bar">
+      <span>
+        <a href='/' className="nav-bar-title">Pizza Delivery!</a>
+      </span>
+
+      <a href='/checkout/' className="fa fa-lg fa-shopping-cart nav-bar-checkout"></a>
 
 
-      </div>
     </div>
-  </div>
 
     )
   }

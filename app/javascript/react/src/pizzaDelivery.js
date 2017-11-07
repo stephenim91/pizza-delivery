@@ -26,7 +26,7 @@ class PizzaDelivery extends Component {
             <Route exact path='/' component = {LandingPage} />
             <Route exact path='/restaurants' component={RestaurantsIndex} />
             <Route path='/restaurants/:id' component={RestaurantShow} />
-            <Route path='/checkout' component={CheckoutShow} />
+            <Route exact path='/checkout' component={CheckoutShow} />
           </Switch>
         </BrowserRouter>
       </div>

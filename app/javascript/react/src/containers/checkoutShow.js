@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 
-class RestaurantsIndex extends Component {
+class CheckoutShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      longform_address: '',
-      latitude: '',
-      longitude: '',
-      restaurants: [{logoUrl: '', name: '', apiKey: ''}]
     }
   }
 
@@ -22,6 +17,7 @@ class RestaurantsIndex extends Component {
   render() {
     return(
       <div>
+        <div className="checkout-page-nav-bar-buffer"></div>
 
         <p>checkout</p>
         <p>1 Potato, Bacon, Green Onion and Ranch Pizza </p>
@@ -32,4 +28,4 @@ class RestaurantsIndex extends Component {
   }
 }
 
-export default RestaurantsIndex
+export default CheckoutShow

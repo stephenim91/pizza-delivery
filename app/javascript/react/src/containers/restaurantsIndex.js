@@ -11,7 +11,7 @@ class RestaurantsIndex extends Component {
       longform_address: '',
       latitude: '',
       longitude: '',
-      restaurants: [{logoUrl: '', name: '', apiKey: ''}]
+      restaurants: [{taxrate: '', hours: '', deliveryPrice: '', deliveryMin: '', logoUrl: '', name: '', apiKey: ''}]
     }
   }
 
@@ -57,8 +57,8 @@ class RestaurantsIndex extends Component {
 
     return(
       <div>
-
-          {restaurants}
+        <div className="index-page-nav-bar-buffer"></div>
+        {restaurants}
 
       </div>
     )

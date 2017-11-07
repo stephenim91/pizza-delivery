@@ -1,10 +1,29 @@
-.title-bar-title.nav-bar {
+.nav-bar-title {
   font-family: 'Cabin Sketch';
   font-size: 2rem;
   text-decoration: none;
   color: white;
 }
 
-.title-bar.nav-bar {
+.nav-bar-title:hover {
+  color: black;
+}
+
+.nav-bar {
   background: #A96607;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+}
+
+.nav-bar-checkout {
+  color: white;
+  position: relative;
+  float: right;
+  padding-top: 1rem;
+  padding-right: 1rem;
+}
+
+.nav-bar-checkout:hover {
+  color: black;
 }

@@ -10,7 +10,13 @@ class RestaurantShow extends Component {
     super(props)
     this.state = {
       menu: [{key: 'static', name: '', items: [{name: '', description: '', apiKey: ''}]}],
-      name: ''
+      taxRate: '',
+      hours: '',
+      deliveryPrice: '',
+      deliveryMin: '',
+      logoUrl: '',
+      restaurantName: '',
+      restaurantApiKey: ''
     }
   }
 
@@ -23,6 +29,12 @@ class RestaurantShow extends Component {
       let menu = body
       this.setState({ menu: menu })
     })
+    fetch(`https://api.eatstreet.com/publicapi/v1/restaurant/${restaurantId}/?&access-token=${token}`)
+    .then(response => response.json())
+    .then(body => {
+      let restaurant = body.restaurant
+      this.setState({ taxRate: restaurant.taxRate, hours: restaurant.hours, deliveryPrice: restaurant.deliveryPrice, deliveryMin: restaurant.deliveryMin, logoUrl: restaurant.logoUrl, restaurantApiKey: restaurant.apiKey, restaurantName: restaurant.name })
+    })
   }
 
   render() {
@@ -31,14 +43,41 @@ class RestaurantShow extends Component {
         <RestaurantShowSubmenu
           key={submenu.apiKey}
           name={submenu.name}
-          items={submenu.items} />
+          items={submenu.items}
+          restaurantApiKey={this.state.restaurantApiKey} />
       )
     })
+
+    let deliveryFee = this.state.deliveryPrice
+    if (deliveryFee == undefined) {
+      deliveryFee = 'Free'
+    } else {
+      deliveryFee = `Fee: $${deliveryFee}`
+    }
+
+    let deliveryMin = this.state.deliveryMin
+    if (deliveryMin == '') {
+      deliveryMin = 'No Minimum'
+    } else {
+      deliveryMin = `Min: $${deliveryMin}`
+    }
+
     return(
       <div>
+        <div className="show-page-nav-bar-buffer"></div>
         <div className="row">
           <div className="small-6 column">
-            <h2></h2>
+            <div className="row">
+              <h2>{this.state.restaurantName}</h2>
+            </div>
+            <div className="row">
+              <div className="small-6 column">
+                <img src={this.state.logoUrl}></img>
+              </div>
+              <div className="small-6 column">
+                <p>Delivery:<br/>{deliveryMin}<br/>{deliveryFee}</p>
+              </div>
+            </div>
             Restaurant description<br/>Restaurant Reviews and ratings<br />popout form to add rating
           </div>
           <div className="small-6 column">

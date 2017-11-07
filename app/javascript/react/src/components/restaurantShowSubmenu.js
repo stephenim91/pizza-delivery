@@ -32,7 +32,8 @@ class RestaurantShowSubmenu extends Component {
           <RestaurantShowSubmenuItem
             key={item.apiKey}
             name={item.name}
-            description={item.description} />
+            description={item.description}
+            price={item.basePrice} />
         )
       })
     }
@@ -52,7 +53,7 @@ const RestaurantShowSubmenuItem = props => {
   return(
     <label className="submenu-tile">
       <span>
-        &nbsp;<strong>{props.name}</strong><br/>{props.description}
+        &nbsp;<strong>{props.name}</strong> - ${props.price}<br/>{props.description}
       </span>
       <label>
         <span>Special instructions: </span>

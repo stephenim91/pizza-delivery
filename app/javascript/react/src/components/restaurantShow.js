@@ -9,9 +9,11 @@ class RestaurantShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      menu: [{key: 'static', name: '', items: [{name: '', description: '', apiKey: ''}]}]
+      menu: [{key: 'static', name: '', items: [{name: '', description: '', apiKey: ''}]}],
+      name: ''
     }
   }
+
   componentDidMount() {
     let token = process.env.REACT_APP_EAT_STREET_TOKEN
     let restaurantId = this.props.match.params.id
@@ -34,12 +36,13 @@ class RestaurantShow extends Component {
     })
     return(
       <div>
-        <h2>Menu</h2>
         <div className="row">
           <div className="small-6 column">
+            <h2></h2>
             Restaurant description<br/>Restaurant Reviews and ratings<br />popout form to add rating
           </div>
           <div className="small-6 column">
+            <h2>Menu</h2>
             {products}
           </div>
         </div>

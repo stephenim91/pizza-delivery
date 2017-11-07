@@ -4,6 +4,7 @@ import RestaurantsIndex from './containers/restaurantsIndex'
 import RestaurantShow from './components/restaurantShow'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import TopNavBar from './components/topNavBar'
+import CheckoutShow from './containers/checkoutShow'
 
 
 
@@ -25,6 +26,7 @@ class PizzaDelivery extends Component {
             <Route exact path='/' component = {LandingPage} />
             <Route exact path='/restaurants' component={RestaurantsIndex} />
             <Route path='/restaurants/:id' component={RestaurantShow} />
+            <Route path='/checkout' component={CheckoutShow} />
           </Switch>
         </BrowserRouter>
       </div>

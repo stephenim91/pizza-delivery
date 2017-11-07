@@ -33,7 +33,8 @@ class RestaurantShowSubmenu extends Component {
             key={item.apiKey}
             name={item.name}
             description={item.description}
-            price={item.basePrice} />
+            price={item.basePrice.toFixed(2)}
+            restaurantApiKey={this.props.restaurantApiKey} />
         )
       })
     }
@@ -49,21 +50,43 @@ class RestaurantShowSubmenu extends Component {
   }
 }
 
-const RestaurantShowSubmenuItem = props => {
-  return(
-    <label className="submenu-tile">
-      <span>
-        &nbsp;<strong>{props.name}</strong> - ${props.price}<br/>{props.description}
-      </span>
-      <label>
-        <span>Special instructions: </span>
-        <input type="textbox" />
-        <div className="submenu-button button" type="submit">Add to cart</div>
+class RestaurantShowSubmenuItem extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      quantity: 1,
+      instruction: ''
+    }
+    this.handleInstruction = this.handleInstruction.bind(this)
+    this.handleAdd = this.handleAdd.bind(this)
+  }
+
+  handleInstruction(event) {
+    let value = event.target.value
+    this.setState({ instruction: value })
+  }
+
+  handleAdd(event) {
+    event.preventDefault;
+    let payload = {instruction: this.state.instruction, name: this.props.name, price: this.props.price, quantity: this.state.quantity, restaurant: this.props.restaurantApiKey}
+  }
+
+  render() {
+    return(
+      <label className="submenu-tile">
+        <span>
+          &nbsp;<strong>{this.props.name}</strong> - <i>${this.props.price}</i><br/>{this.props.description}
+        </span>
+        <label>
+          <span>Special instructions: </span>
+          <input onChange={this.handleInstruction} value={this.state.instruction} type="textbox" />
+        </label>
+        <span>Quantity: {this.state.quantity}</span>
+        <div onClick={this.handleAdd} className="submenu-button button" type="submit">Add to cart</div>
+
       </label>
-
-    </label>
-
-  )
+    )
+  }
 }
 
 export default RestaurantShowSubmenu

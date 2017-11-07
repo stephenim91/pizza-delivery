@@ -43,7 +43,8 @@ class RestaurantShow extends Component {
         <RestaurantShowSubmenu
           key={submenu.apiKey}
           name={submenu.name}
-          items={submenu.items} />
+          items={submenu.items}
+          restaurantApiKey={this.state.restaurantApiKey} />
       )
     })
 

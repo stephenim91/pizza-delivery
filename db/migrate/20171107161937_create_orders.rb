@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.integer :quantity, default: 1
       t.boolean :ordered, default: false
       t.string :restaurant, null: false
+      t.string :instruction
 
       t.timestamps
       t.belongs_to :address

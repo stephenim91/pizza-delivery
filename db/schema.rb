@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20171107161937) do
     t.integer "quantity", default: 1
     t.boolean "ordered", default: false
     t.string "restaurant", null: false
+    t.string "instruction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "address_id"

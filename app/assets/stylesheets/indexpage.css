@@ -11,11 +11,12 @@
 }
 
 .restaurant-tile {
-  font-family: 'Stoke';
+  font-family: 'Arsenal';
 }
 
 .index-page.restaurant-name {
   color: black;
+  font-size: 1.5rem;
 }
 
 .index-page.restaurant-name:hover {

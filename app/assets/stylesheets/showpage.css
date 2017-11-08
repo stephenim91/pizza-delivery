@@ -1,14 +1,36 @@
-.submenu-content {
+.show-page.menu-section {
+  background: #FFFEF5;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 3px 3px 3px #E5E5D8;
 }
 
 .submenu-tile {
   background: #FFFEF5;
-  padding: 1rem;
-  margin-top: 1rem;
+  padding-left: 1.5rem;
+  margin-bottom: 0.3rem;
+  font-family: 'Arsenal';
 }
 
 .submenu-button.button {
-  background: #FF8544;
+  background: #FFD597;
+  color: black;
+  box-shadow: 2px 2px 2px #B2B2A3;
+  position: relative;
+  padding: 0.5rem;
+  float: right;
+}
+
+.submenu-button.button:hover {
+  background: #FDFBE1;
+  text-decoration: underline;
+}
+
+.submenu-button.button:active {
+  background: #FFFEF5;
+  top: 2px;
+  left: 2px;
+  box-shadow: inset 2px 2px 2px #B2B2A3;
 }
 
 .show-page-nav-bar-buffer {
@@ -18,4 +40,16 @@
 .show-page-header {
   text-align: center;
   font-family: 'Stoke';
+}
+
+.submenu-title {
+  font-family: 'Arsenal';
+  font-size: 1.3rem;
+}
+.submenu-title:hover {
+  text-decoration: underline;
+}
+
+.submenu-title.active {
+  font-style: italic;
 }

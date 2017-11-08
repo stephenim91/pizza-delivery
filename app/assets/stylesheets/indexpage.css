@@ -9,3 +9,15 @@
 .index-page-nav-bar-buffer {
   height: 5rem;
 }
+
+.restaurant-tile {
+  font-family: 'Stoke';
+}
+
+.index-page.restaurant-name {
+  color: black;
+}
+
+.index-page.restaurant-name:hover {
+  text-decoration: underline;
+}

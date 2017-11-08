@@ -17,13 +17,20 @@
 .button.address-search-bar {
   float: right;
   margin-right: 0;
-  margin-top: -3.47rem;
+  margin-top: -3.65rem;
   position: relative;
   background: #FF8544;
+  box-shadow: 0px 2px #9D542E;
+}
+
+.button.address-search-bar:hover {
+  background: #CE6F3D;
 }
 
 .button.address-search-bar:active {
-  background: #A96607;
+  background: #CE6F3D;
+  box-shadow: none;
+  top: 3px;
 }
 
 .address-search-bar-label {

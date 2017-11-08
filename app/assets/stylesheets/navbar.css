@@ -3,10 +3,11 @@
   font-size: 2rem;
   text-decoration: none;
   color: white;
+  padding-left: 0.6rem;
 }
 
 .nav-bar-title:hover {
-  color: #00C622;
+  color: black;
 }
 
 .nav-bar {
@@ -14,6 +15,7 @@
   position: fixed;
   z-index: 1000;
   width: 100%;
+  box-shadow: 2px 2px 2px #9D542E;
 }
 
 .nav-bar-checkout {
@@ -25,5 +27,5 @@
 }
 
 .nav-bar-checkout:hover {
-  color: #00C622;
+  color: #85EE97;
 }

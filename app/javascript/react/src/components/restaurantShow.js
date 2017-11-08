@@ -66,7 +66,7 @@ class RestaurantShow extends Component {
       <div>
         <div className="show-page-nav-bar-buffer"></div>
         <div className="row">
-          <div className="small-6 column">
+          <div className="small-5 column">
             <div className="row">
               <h3 className="show-page-header">{this.state.restaurantName}</h3>
             </div>
@@ -80,8 +80,8 @@ class RestaurantShow extends Component {
             </div>
             Restaurant description<br/>Restaurant Reviews and ratings<br />popout form to add rating
           </div>
-          <div className="small-6 column">
-            <h3 className="show-page-header">Menu</h3>
+          <div className="show-page menu-section small-6 column">
+            <h3 className="show-page-header">~Menu~</h3>
             {products}
           </div>
         </div>

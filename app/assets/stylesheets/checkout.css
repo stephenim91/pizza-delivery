@@ -1,3 +1,37 @@
 .checkout-page-nav-bar-buffer {
   height: 5rem;
 }
+
+.checkout-page-panel {
+  background: #FFFEF5;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  box-shadow: 3px 3px 3px #E5E5D8;
+
+}
+
+.checkout-page.button {
+  background: #FFD597;
+  color: black;
+  box-shadow: 2px 2px 2px #B2B2A3;
+  font-family: 'Arsenal'
+}
+
+.checkout-page.button:hover {
+  background: #FDFBE1;
+  color: black;
+  text-decoration: underline;
+}
+
+.checkout-page.button:active {
+  background: #FFFEF5;
+  top: 2px;
+  left: 2px;
+  box-shadow: inset 2px 2px 2px #B2B2A3;
+}
+
+.checkout-page-text {
+  font-family: 'Arsenal';
+}

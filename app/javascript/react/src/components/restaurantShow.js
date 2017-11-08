@@ -81,7 +81,7 @@ class RestaurantShow extends Component {
             Restaurant description<br/>Restaurant Reviews and ratings<br />popout form to add rating
           </div>
           <div className="show-page menu-section small-6 column">
-            <h3 className="show-page-header">~Menu~</h3>
+            <h3 className="show-page-header">Menu</h3>
             {products}
           </div>
         </div>

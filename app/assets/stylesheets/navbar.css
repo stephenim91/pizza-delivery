@@ -27,5 +27,6 @@
 }
 
 .nav-bar-checkout:hover {
-  color: #85EE97;
+  /*color: #85EE97;*/
+  color: black;
 }

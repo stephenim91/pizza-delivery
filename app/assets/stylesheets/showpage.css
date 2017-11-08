@@ -4,6 +4,26 @@
   padding: 1rem;
   box-shadow: 3px 3px 3px #E5E5D8;
 }
+.show-page.restaurant-section {
+  background: #FFFEF5;
+  margin: 1rem;
+  margin-right: 0;
+  padding: 1rem;
+  box-shadow: 3px 3px 3px #E5E5D8;
+}
+
+.restaurant-info {
+  font-family: 'Arsenal';
+}
+
+.show-page.reviews-section {
+  background: #FFFEF5;
+  margin: 1rem;
+  margin-right: 0;
+  padding: 1rem;
+  margin-top: 2rem;
+  box-shadow: 3px 3px 3px #E5E5D8;
+}
 
 .submenu-tile {
   background: #FFFEF5;
@@ -52,4 +72,11 @@
 
 .submenu-title.active {
   font-style: italic;
+}
+
+.new-review-modal {
+}
+
+.rating {
+  font-size: 1.7rem;
 }

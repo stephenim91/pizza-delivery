@@ -18,6 +18,10 @@ class PaymentShow extends Component {
     return(
       <div>
         <div className="checkout-page-nav-bar-buffer"></div>
+        <div className="checkout-page-panel">
+          <h3 className="checkout-page-text header">Your order has been processed!</h3>
+          <p className="checkout-page-text">Your order should be here by 5:58pm</p>
+        </div>
       </div>
     )
   }

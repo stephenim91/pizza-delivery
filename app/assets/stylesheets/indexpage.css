@@ -1,9 +1,14 @@
 .row.restaurant-tile {
   background: #FFFEF5;
-  padding: 2rem;
   margin-bottom: 2rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
+  margin-left: auto;
+  max-width: 520px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-shadow: 3px 3px 3px #E5E5D8;
+
 }
 
 .index-page-nav-bar-buffer {

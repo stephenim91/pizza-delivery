@@ -14,7 +14,7 @@ class CheckoutTile extends Component {
 
   render() {
     return(
-      <div className="row">
+      <div className="row checkout-tile">
         <div className="small-2 column"></div>
         <div className="small-6 column">
           <p><strong>{this.props.name}</strong></p>
@@ -23,7 +23,7 @@ class CheckoutTile extends Component {
           <p>{this.props.quantity}</p>
         </div>
         <div className="small-2 column">
-          <p>{this.props.price}</p>
+          <p>${this.props.price}</p>
         </div>
       </div>
     )

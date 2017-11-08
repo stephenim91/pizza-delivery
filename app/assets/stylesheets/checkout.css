@@ -9,6 +9,10 @@
   margin-left: 5rem;
   margin-right: 5rem;
   box-shadow: 3px 3px 3px #E5E5D8;
+  max-width: 750px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 
@@ -16,7 +20,7 @@
   background: #FFD597;
   color: black;
   box-shadow: 2px 2px 2px #B2B2A3;
-  font-family: 'Arsenal'
+  font-family: 'Arsenal';
 }
 
 .checkout-page.button:hover {
@@ -33,5 +37,9 @@
 }
 
 .checkout-page-text {
+  font-family: 'Arsenal';
+}
+
+.checkout-tile {
   font-family: 'Arsenal';
 }

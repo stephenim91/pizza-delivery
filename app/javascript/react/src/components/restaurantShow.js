@@ -4,14 +4,14 @@ import RestaurantShowSubmenu from './restaurantShowSubmenu'
 import Modal from 'react-modal';
 
 
-const customStyles = {
+const modalParameters = {
   content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    top: '30%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
   }
 };
 
@@ -29,12 +29,9 @@ class RestaurantShow extends Component {
       logoUrl: '',
       restaurantName: '',
       restaurantApiKey: '',
-      modalIsOpen: false
+      reviewModalIsOpen: false
     }
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-
+    this.handleReviewModal = this.handleReviewModal.bind(this);
   }
 
   componentDidMount() {
@@ -54,17 +51,8 @@ class RestaurantShow extends Component {
     })
   }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
-  }
-
-  closeModal() {
-    this.setState({modalIsOpen: false});
+  handleReviewModal() {
+    this.setState({modalIsOpen: !this.state.modalIsOpen});
   }
 
 
@@ -98,31 +86,10 @@ class RestaurantShow extends Component {
         <div className="show-page-nav-bar-buffer"></div>
         <div className="row">
           <div className="small-5 column">
+          <div className="show-page restaurant-section">
+
             <div className="row">
               <h3 className="show-page-header">{this.state.restaurantName}</h3>
-            </div>
-
-            <div>
-              <button onClick={this.openModal}>Open Modal</button>
-              <Modal
-                isOpen={this.state.modalIsOpen}
-                onAfterOpen={this.afterOpenModal}
-                onRequestClose={this.closeModal}
-                style={customStyles}
-                contentLabel="Example Modal"
-              >
-
-                <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-                <button onClick={this.closeModal}>close</button>
-                <div>I am a modal</div>
-                <form>
-                  <input />
-                  <button>tab navigation</button>
-                  <button>stays</button>
-                  <button>inside</button>
-                  <button>the modal</button>
-                </form>
-              </Modal>
             </div>
 
             <div className="row">
@@ -130,15 +97,43 @@ class RestaurantShow extends Component {
                 <img src={this.state.logoUrl}></img>
               </div>
               <div className="small-6 column">
-                <p>Delivery {deliveryFee} | {deliveryMin}</p>
+                <p className="restaurant-info">Delivery {deliveryFee} | {deliveryMin}</p>
+                <div class="rating">
+                  <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                </div>
+                <div>
+                  <button className="button checkout-page" onClick={this.handleReviewModal}>Add a New Review</button>
+                  <Modal isOpen={this.state.modalIsOpen} style={modalParameters}>
+                  <div className="new-review-modal">
+                  <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+                  <button onClick={this.handleReviewModal}>close</button>
+                  <div>I am a modal</div>
+                  <form>
+                  <input />
+                  <button>tab navigation</button>
+                  <button>stays</button>
+                  <button>inside</button>
+                  <button>the modal</button>
+                  </form>
+                  </div>
+                  </Modal>
+                </div>
               </div>
             </div>
-            Restaurant description<br/>Restaurant Reviews and ratings<br />popout form to add rating
+
           </div>
+          <div className="row show-page reviews-section">
+          <h4 className="show-page-header">Reviews and Ratings</h4>
+          </div>
+          </div>
+
+
           <div className="show-page menu-section small-6 column">
             <h3 className="show-page-header">Menu</h3>
             {products}
           </div>
+
+
         </div>
       </div>
     )

@@ -21,15 +21,12 @@ class LandingPage extends Component {
         </div>
 
         <div className="explanation-landing-page">
-          <p>We take pizza out of the ovens of nearby restaurants and into you mouth!<br /><i>-Thomas Jefferson</i></p>
-          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
-          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
-          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
-          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
-          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
-          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
-          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
-          <p>We take pizza very seriously.<br /><i>-Immanuel Kant</i></p>
+          <h6>We take pizza out of the ovens of nearby restaurants and into you mouth!<br /><i>-Thomas Jefferson</i></h6>
+          <h6>We take pizza very seriously.<br /><i>-Immanuel Kant</i></h6>
+          <div className="huge-emoji">🙄 🦀 ⁉️</div>
+          <div className="huge-emoji">💻 ☎️ 👇</div>
+          <div className="huge-emoji">🚙 💭 🕓</div>
+          <div className="huge-emoji">🍕 🍕 🍕</div>
         </div>
       </div>
     )

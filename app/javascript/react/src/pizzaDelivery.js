@@ -5,6 +5,7 @@ import RestaurantShow from './components/restaurantShow'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import TopNavBar from './components/topNavBar'
 import CheckoutShow from './containers/checkoutShow'
+import PaymentShow from './containers/paymentShow'
 
 
 
@@ -27,6 +28,7 @@ class PizzaDelivery extends Component {
             <Route exact path='/restaurants' component={RestaurantsIndex} />
             <Route path='/restaurants/:id' component={RestaurantShow} />
             <Route exact path='/checkout' component={CheckoutShow} />
+            <Route exact path='/confirmation' component={PaymentShow} />
           </Switch>
         </BrowserRouter>
       </div>

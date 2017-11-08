@@ -4,8 +4,10 @@ class Api::V1::OrdersController < ApplicationController
   # before_action :authenticate_user!, only: [:show, :create]
 
   def index
-    # address = Address.last.to_json
-    # render json: address
+    address = Address.last
+    orders = Order.where(address: address, ordered: false)
+    checkout = {address: address.longform_address, orders: orders}
+    render json: checkout
   end
 
   def create

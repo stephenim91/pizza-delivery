@@ -1,5 +1,5 @@
 .search-section-landing-page {
-  background-image: url(nonleft.jpg);
+  background-image: url(garlic.jpg);
   background-attachment: fixed;
   background-size: cover;
 }
@@ -17,19 +17,28 @@
 .button.address-search-bar {
   float: right;
   margin-right: 0;
-  margin-top: -3.47rem;
+  margin-top: -3.65rem;
   position: relative;
   background: #FF8544;
+  box-shadow: 0px 2px #9D542E;
+  font-family: 'Arsenal';
+}
+
+.button.address-search-bar:hover {
+  background: #CE6F3D;
 }
 
 .button.address-search-bar:active {
-  background: #A96607;
+  background: #CE6F3D;
+  box-shadow: none;
+  top: 3px;
 }
 
 .address-search-bar-label {
   color: #FFFFFF;
   margin-bottom: 0rem;
   text-shadow: 1px 1px #000000;
+  font-family: 'Arsenal';
 }
 
 .search-section-bottom-spacer {

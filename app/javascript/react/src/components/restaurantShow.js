@@ -52,36 +52,36 @@ class RestaurantShow extends Component {
     if (deliveryFee == undefined) {
       deliveryFee = 'Free'
     } else {
-      deliveryFee = `Fee: $${deliveryFee}`
+      deliveryFee = `Fee. $${deliveryFee}`
     }
 
     let deliveryMin = this.state.deliveryMin
     if (deliveryMin == '') {
       deliveryMin = 'No Minimum'
     } else {
-      deliveryMin = `Min: $${deliveryMin}`
+      deliveryMin = `Min. $${deliveryMin}`
     }
 
     return(
       <div>
         <div className="show-page-nav-bar-buffer"></div>
         <div className="row">
-          <div className="small-6 column">
+          <div className="small-5 column">
             <div className="row">
-              <h2>{this.state.restaurantName}</h2>
+              <h3 className="show-page-header">{this.state.restaurantName}</h3>
             </div>
             <div className="row">
               <div className="small-6 column">
                 <img src={this.state.logoUrl}></img>
               </div>
               <div className="small-6 column">
-                <p>Delivery:<br/>{deliveryMin}<br/>{deliveryFee}</p>
+                <p>Delivery {deliveryFee} | {deliveryMin}</p>
               </div>
             </div>
             Restaurant description<br/>Restaurant Reviews and ratings<br />popout form to add rating
           </div>
-          <div className="small-6 column">
-            <h2>Menu</h2>
+          <div className="show-page menu-section small-6 column">
+            <h3 className="show-page-header">Menu</h3>
             {products}
           </div>
         </div>

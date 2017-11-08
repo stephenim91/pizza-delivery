@@ -37,11 +37,12 @@ class RestaurantShowSubmenu extends Component {
             restaurantApiKey={this.props.restaurantApiKey} />
         )
       })
+      activity = 'active'
     }
 
     return(
       <div className="submenu">
-        <h4 onClick={this.handleActivity} className="submenu-title">{this.props.name}</h4>
+        <h4 onClick={this.handleActivity} className={`${activity} submenu-title`}>{this.props.name}</h4>
         <div className="submenu-content">
           {items}
         </div>
@@ -59,6 +60,8 @@ class RestaurantShowSubmenuItem extends Component {
     }
     this.handleInstruction = this.handleInstruction.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
+    this.handleMinus = this.handleMinus.bind(this)
+    this.handlePlus = this.handlePlus.bind(this)
   }
 
   handleInstruction(event) {
@@ -78,18 +81,37 @@ class RestaurantShowSubmenuItem extends Component {
     this.setState({ instruction: '', quantity: 1 })
   }
 
+  handleMinus() {
+    if(this.state.quantity > 1) {
+      let newQuantity = (this.state.quantity - 1)
+      this.setState( { quantity: newQuantity })
+    }
+  }
+
+  handlePlus() {
+    if(this.state.quantity < 99) {
+      let newQuantity = (this.state.quantity + 1)
+      this.setState({ quantity: newQuantity })
+    }
+  }
+
   render() {
     return(
       <label className="submenu-tile">
-        <span>
-          &nbsp;<strong>{this.props.name}</strong> - <i>${this.props.price}</i><br/>{this.props.description}
-        </span>
+        <div>
+          <strong>{this.props.name}</strong> - <i>${this.props.price}</i>
+        </div>
+        <div onClick={this.handleAdd} className="submenu-button button" type="submit">Add to cart</div>
+        <div>
+          {this.props.description}
+        </div>
         <label>
           <span>Special instructions: </span>
           <input onChange={this.handleInstruction} value={this.state.instruction} type="textbox" />
         </label>
-        <span>Quantity: {this.state.quantity}</span>
-        <div onClick={this.handleAdd} className="submenu-button button" type="submit">Add to cart</div>
+        <span>Quantity: {this.state.quantity}</span>&nbsp;
+        <span onClick={this.handleMinus} className="fa fa-minus-square-o"></span>&nbsp;
+        <span onClick={this.handlePlus} className="fa fa-plus-square-o"></span>
 
       </label>
     )

@@ -62,6 +62,11 @@
   font-family: 'Arsenal';
 }
 
+.show-page-warning-text {
+  font-family: 'Arsenal';
+  color: #FF6B6B;
+}
+
 .submenu-title {
   font-family: 'Arsenal';
   font-size: 1.3rem;
@@ -77,6 +82,41 @@
 .new-review-modal {
 }
 
+.firm-rating {
+  font-size: 1.7rem;
+}
+
 .rating {
   font-size: 1.7rem;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+
+
+.rating-submitted {
+  font-size: 1.7rem;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+}
+
+
+.new-review-close-button {
+  margin-left: 14rem;
+}
+
+.button.checkout-page.new-review {
+  margin-left: 5rem;
+}
+.button.checkout-page.add-more {
+}
+.button.checkout-page.to-checkout {
+  margin-left: 4rem;
 }

@@ -6,6 +6,7 @@ class CreateAddressesTable < ActiveRecord::Migration[5.1]
       t.string :longitude, null: false
 
       t.timestamps
+      t.belongs_to :user
     end
   end
 end

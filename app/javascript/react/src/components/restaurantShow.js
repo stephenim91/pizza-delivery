@@ -29,9 +29,15 @@ class RestaurantShow extends Component {
       logoUrl: '',
       restaurantName: '',
       restaurantApiKey: '',
-      reviewModalIsOpen: false
+      reviewModalIsOpen: false,
+      starSubmittedValue: 0,
+      reviewBody: '',
+      reviewSubmitError: ''
     }
     this.handleReviewModal = this.handleReviewModal.bind(this);
+    this.handleStarClick = this.handleStarClick.bind(this);
+    this.handleReviewChange = this.handleReviewChange.bind(this);
+    this.handleReviewModalSubmit = this.handleReviewModalSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -52,9 +58,26 @@ class RestaurantShow extends Component {
   }
 
   handleReviewModal() {
-    this.setState({modalIsOpen: !this.state.modalIsOpen});
+    this.setState({reviewModalIsOpen: !this.state.reviewModalIsOpen});
   }
 
+  handleStarClick(event) {
+    this.setState({ starSubmittedValue: parseInt(event.target.title) })
+  }
+
+  handleReviewChange(event) {
+    this.setState({ reviewBody: event.target.value })
+  }
+
+  handleReviewModalSubmit() {
+    if(this.state.reviewBody == '' || this.state.starSubmittedValue == 0) {
+      this.setState({ reviewSubmitError: 'Please complete all fields' })
+    } else {
+      let payload = ({rating: this.state.starSubmittedValue, body: this.state.reviewBody})
+      //fetch
+      this.setState({ starSubmittedValue: 0, reviewBody: '', reviewSubmitError: '', reviewModalIsOpen: false})
+    }
+  }
 
   render() {
     let products = this.state.menu.map(submenu => {
@@ -80,7 +103,37 @@ class RestaurantShow extends Component {
     } else {
       deliveryMin = `Min. $${deliveryMin}`
     }
+    let oneStar = '☆'
+    let twoStar = '☆'
+    let threeStar = '☆'
+    let fourStar = '☆'
+    let fiveStar = '☆'
 
+    let starSubmitted = ''
+    if(this.state.starSubmittedValue) {
+      starSubmitted = '-submitted'
+    }
+    if(this.state.starSubmittedValue == 1) {
+      oneStar = '★'
+    } else if(this.state.starSubmittedValue == 2){
+      oneStar = '★'
+      twoStar = '★'
+    } else if(this.state.starSubmittedValue == 3){
+      oneStar = '★'
+      twoStar = '★'
+      threeStar = '★'
+    } else if(this.state.starSubmittedValue == 4){
+      oneStar = '★'
+      twoStar = '★'
+      threeStar = '★'
+      fourStar = '★'
+    } else if(this.state.starSubmittedValue == 5){
+      oneStar = '★'
+      twoStar = '★'
+      threeStar = '★'
+      fourStar = '★'
+      fiveStar = '★'
+    }
     return(
       <div>
         <div className="show-page-nav-bar-buffer"></div>
@@ -98,23 +151,29 @@ class RestaurantShow extends Component {
               </div>
               <div className="small-6 column">
                 <p className="restaurant-info">Delivery {deliveryFee} | {deliveryMin}</p>
-                <div class="rating">
+                <div className="firm-rating">
                   <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                 </div>
                 <div>
                   <button className="button checkout-page" onClick={this.handleReviewModal}>Add a New Review</button>
-                  <Modal isOpen={this.state.modalIsOpen} style={modalParameters}>
-                  <div className="new-review-modal">
-                  <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-                  <button onClick={this.handleReviewModal}>close</button>
-                  <div>I am a modal</div>
-                  <form>
-                  <input />
-                  <button>tab navigation</button>
-                  <button>stays</button>
-                  <button>inside</button>
-                  <button>the modal</button>
-                  </form>
+
+                  <Modal isOpen={this.state.reviewModalIsOpen} style={modalParameters}>
+                    <div className="new-review-modal">
+                    <div className="fa fa-times new-review-close-button" onClick={this.handleReviewModal}></div>
+                    <h4 className="show-page-header">New Review</h4>
+                    <p className="show-page-warning-text">{this.state.reviewSubmitError}</p>
+                      <div className={`rating${starSubmitted}`}>
+                      <span onClick={this.handleStarClick} title="5">{fiveStar}</span>
+                      <span onClick={this.handleStarClick} title="4">{fourStar}</span>
+                      <span onClick={this.handleStarClick} title="3">{threeStar}</span>
+                      <span onClick={this.handleStarClick} title="2">{twoStar}</span>
+                      <span onClick={this.handleStarClick} title="1">{oneStar}</span>
+                      </div>
+                      <label>
+                        Body:
+                        <input onChange={this.handleReviewChange} className="new-review-text-area" type="text" />
+                      </label>
+                      <button className="button checkout-page new-review" type="submit" onClick={this.handleReviewModalSubmit}>Submit</button>
                   </div>
                   </Modal>
                 </div>

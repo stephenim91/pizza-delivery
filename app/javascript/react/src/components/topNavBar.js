@@ -8,11 +8,10 @@ class TopNavBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
     }
   }
   componentDidMount() {
-    // $(document).foundation();
+
   }
 
   render() {
@@ -21,8 +20,10 @@ class TopNavBar extends Component {
       <span>
         <a href='/' className="nav-bar-title">Pizza Delivery!</a>
       </span>
-
       <a href='/checkout/' className="fa fa-lg fa-shopping-cart nav-bar-checkout"></a>
+      <span className="nav-bar-sign-in">
+        <a className="nav-bar-small-text" href='/logout'>{this.props.navBarText}</a>
+      </span>
 
 
     </div>

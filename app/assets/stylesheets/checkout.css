@@ -22,6 +22,9 @@
   box-shadow: 2px 2px 2px #B2B2A3;
   font-family: 'Arsenal';
 }
+.centered.checkout-page.button {
+  margin-left: 2.9rem;
+}
 
 .checkout-page.button:hover {
   background: #FDFBE1;

@@ -2,6 +2,8 @@ class Api::V1::OrdersController < ApplicationController
   skip_before_action :verify_authenticity_token
     protect_from_forgery unless: -> { request.format.json? }
   # before_action :authenticate_user!, only: [:show, :create]
+  before_filter :authorize
+
 
   def index
     address = Address.last

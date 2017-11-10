@@ -16,6 +16,10 @@
   font-family: 'Arsenal';
 }
 
+.submitted-review-tile {
+  font-family: 'Arsenal';
+}
+
 .show-page.reviews-section {
   background: #FFFEF5;
   margin: 1rem;
@@ -119,4 +123,14 @@
 }
 .button.checkout-page.to-checkout {
   margin-left: 4rem;
+}
+
+.submitted-review-tile-rating {
+  font-size: 1.2rem;
+  margin-top: -1rem;
+}
+
+.submitted-review-tile {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

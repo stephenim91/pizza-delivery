@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import RestaurantShowSubmenu from './restaurantShowSubmenu'
 // import $ from 'jquery'
 import Modal from 'react-modal';
+import SubmittedReviewTile from './submittedReviewTile'
 
 
 const modalParameters = {
@@ -32,7 +33,10 @@ class RestaurantShow extends Component {
       reviewModalIsOpen: false,
       starSubmittedValue: 0,
       reviewBody: '',
-      reviewSubmitError: ''
+      reviewSubmitError: '',
+      reviews: [{rating: '', description: '', username: '', restaurant: '', id: 'initial', created_at: ''}],
+      ratingAvg: 0
+
     }
     this.handleReviewModal = this.handleReviewModal.bind(this);
     this.handleStarClick = this.handleStarClick.bind(this);
@@ -55,6 +59,26 @@ class RestaurantShow extends Component {
       let restaurant = body.restaurant
       this.setState({ taxRate: restaurant.taxRate, hours: restaurant.hours, deliveryPrice: restaurant.deliveryPrice, deliveryMin: restaurant.deliveryMin, logoUrl: restaurant.logoUrl, restaurantApiKey: restaurant.apiKey, restaurantName: restaurant.name })
     })
+    fetch(`/api/v1/reviews.json`,
+      {credentials: "same-origin",
+      headers: {"Content-Type": "application/json"}})
+      .then(response => response.json())
+      .then(body => {
+        let allReviews = body
+        let reviews = allReviews.filter(object => { return object.restaurant == restaurantId })
+        let reversedReviews = reviews.reverse()
+        let ratingSum = 0.0
+        let count = 0
+        reviews.forEach(review => {
+          ratingSum = ratingSum + review.rating;
+          count += 1;
+         })
+         let ratingAvg = Math.round(ratingSum / count)
+         if(ratingAvg == NaN) {
+           rating=Avg = 0
+         }
+        this.setState({reviews: reversedReviews, ratingAvg: ratingAvg })
+      })
   }
 
   handleReviewModal() {
@@ -73,13 +97,31 @@ class RestaurantShow extends Component {
     if(this.state.reviewBody == '' || this.state.starSubmittedValue == 0) {
       this.setState({ reviewSubmitError: 'Please complete all fields' })
     } else {
-      let payload = ({rating: this.state.starSubmittedValue, body: this.state.reviewBody})
-      //fetch
+      fetch(`/api/v1/reviews.json`, {
+        method: "POST",
+        body: JSON.stringify({rating: this.state.starSubmittedValue, body: this.state.reviewBody, restaurant: this.state.restaurantApiKey}),
+        credentials: "same-origin",
+        headers: {"Content-Type": "application/json"}})
+        .then(response => response.json())
+        .then(body => {
+          this.setState({reviews: [...this.state.reviews, body]})
+        })
+
       this.setState({ starSubmittedValue: 0, reviewBody: '', reviewSubmitError: '', reviewModalIsOpen: false})
     }
   }
 
   render() {
+    let mappedReviews = this.state.reviews.map(review => {
+      return(
+        <SubmittedReviewTile
+          key={review.id}
+          rating={review.rating}
+          body={review.body}
+          username={review.username}
+          date={review.created_at}/>
+      )
+    })
     let products = this.state.menu.map(submenu => {
       return(
         <RestaurantShowSubmenu
@@ -134,6 +176,33 @@ class RestaurantShow extends Component {
       fourStar = '★'
       fiveStar = '★'
     }
+    let oneFirmStar = '☆'
+    let twoFirmStar = '☆'
+    let threeFirmStar = '☆'
+    let fourFirmStar = '☆'
+    let fiveFirmStar = '☆'
+
+    if(this.state.ratingAvg == 1) {
+      oneFirmStar = '★'
+    } else if(this.state.ratingAvg == 2){
+      oneFirmStar = '★'
+      twoFirmStar = '★'
+    } else if(this.state.ratingAvg == 3){
+      oneFirmStar = '★'
+      twoFirmStar = '★'
+      threeFirmStar = '★'
+    } else if(this.state.ratingAvg == 4){
+      oneFirmStar = '★'
+      twoFirmStar = '★'
+      threeFirmStar = '★'
+      fourFirmStar = '★'
+    } else if(this.state.ratingAvg == 5){
+      oneFirmStar = '★'
+      twoFirmStar = '★'
+      threeFirmStar = '★'
+      fourFirmStar = '★'
+      fiveFirmStar = '★'
+    }
     return(
       <div>
         <div className="show-page-nav-bar-buffer"></div>
@@ -152,7 +221,7 @@ class RestaurantShow extends Component {
               <div className="small-6 column">
                 <p className="restaurant-info">Delivery {deliveryFee} | {deliveryMin}</p>
                 <div className="firm-rating">
-                  <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                  <span>{oneFirmStar}</span><span>{twoFirmStar}</span><span>{threeFirmStar}</span><span>{fourFirmStar}</span><span>{fiveFirmStar}</span>
                 </div>
                 <div>
                   <button className="button checkout-page" onClick={this.handleReviewModal}>Add a New Review</button>
@@ -182,7 +251,8 @@ class RestaurantShow extends Component {
 
           </div>
           <div className="row show-page reviews-section">
-          <h4 className="show-page-header">Reviews and Ratings</h4>
+            <h4 className="show-page-header">Reviews and Ratings</h4>
+            {mappedReviews}
           </div>
           </div>
 

@@ -1,0 +1,63 @@
+.rails-sign-up-modal {
+  position: fixed;
+  z-index: 1001;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rails-log-in-modal {
+  position: fixed;
+  z-index: 1001;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rails-modal {
+  font-family: 'Arsenal';
+}
+.rails-modal.footer {
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+.rails-modal.footer:hover {
+  text-decoration: underline;
+}
+.rails-modal.sign-up {
+  text-decoration: none;
+  color: black;
+}
+.rails-modal.sign-up:hover {
+  text-decoration: underline;
+}
+.rails-modal.header {
+  text-align: center;
+}
+
+.modal-white-space {
+  width: 24rem;
+  height: 30rem;
+}
+
+.continue-as-guest-button {
+  font-family: 'Arsenal';
+  background: white;
+  border: none;
+  margin-left: -0.5rem;
+  color: black;
+  text-decoration: none;
+}
+.continue-as-guest-button:hover {
+  text-decoration: underline;
+}
+
+.invisible {
+  display: none;
+}
+
+.sign-up-header {
+  font-family: 'Arsenal';
+  text-align: center;
+}

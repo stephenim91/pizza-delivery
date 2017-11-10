@@ -1,5 +1,5 @@
 .search-section-landing-page {
-  background-image: url(garlic.jpg);
+  background-image: url(blackveggies.jpeg);
   background-attachment: fixed;
   background-size: cover;
 }
@@ -9,9 +9,11 @@
 }
 
 .address-search-bar {
-  margin-left: 5rem;
-  margin-right: 5rem;
   position: sticky;
+  max-width: 520px;
+  margin: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .button.address-search-bar {
@@ -43,4 +45,14 @@
 
 .search-section-bottom-spacer {
   height: 15rem;
+}
+
+.huge-emoji {
+  font-size: 10rem;
+  text-align: center;
+}
+
+.explanation-landing-page {
+  padding: 3rem;
+  font-family: 'Arsenal'
 }

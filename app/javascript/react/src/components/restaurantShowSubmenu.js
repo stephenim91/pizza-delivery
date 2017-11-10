@@ -1,4 +1,18 @@
 import React, { Component } from 'react'
+import Modal from 'react-modal';
+import { NavLink } from 'react-router-dom'
+
+
+const modalParameters = {
+  content : {
+    top: '30%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  }
+};
 
 
 class RestaurantShowSubmenu extends Component {
@@ -56,17 +70,23 @@ class RestaurantShowSubmenuItem extends Component {
     super(props)
     this.state = {
       quantity: 1,
-      instruction: ''
+      instruction: '',
+      cartModalIsOpen: false
     }
     this.handleInstruction = this.handleInstruction.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
     this.handleMinus = this.handleMinus.bind(this)
     this.handlePlus = this.handlePlus.bind(this)
+    this.handleCartModal = this.handleCartModal.bind(this)
   }
 
   handleInstruction(event) {
     let value = event.target.value
     this.setState({ instruction: value })
+  }
+
+  handleCartModal() {
+    this.setState({cartModalIsOpen: false});
   }
 
   handleAdd(event) {
@@ -78,7 +98,7 @@ class RestaurantShowSubmenuItem extends Component {
       credentials: "same-origin",
       headers: {"Content-Type": "application/json"}
     })
-    this.setState({ instruction: '', quantity: 1 })
+    this.setState({ instruction: '', quantity: 1 , cartModalIsOpen: true})
   }
 
   handleMinus() {
@@ -112,6 +132,13 @@ class RestaurantShowSubmenuItem extends Component {
         <span>Quantity: {this.state.quantity}</span>&nbsp;
         <span onClick={this.handleMinus} className="fa fa-minus-square-o"></span>&nbsp;
         <span onClick={this.handlePlus} className="fa fa-plus-square-o"></span>
+
+        <Modal isOpen={this.state.cartModalIsOpen} style={modalParameters}>
+          <h4 className="show-page-header">Item successfully added!</h4>
+          <div>&nbsp;</div>
+          <button className="button checkout-page add-more" onClick={this.handleCartModal}>Stay on this page</button>
+          <NavLink onClick={this.handleCartModal} className="button checkout-page to-checkout" to='/checkout'>Take me to my cart!</NavLink>
+        </Modal>
 
       </label>
     )

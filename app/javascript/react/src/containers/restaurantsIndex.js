@@ -16,6 +16,8 @@ class RestaurantsIndex extends Component {
   }
 
   componentDidMount() {
+
+
     // $(document).foundation();
     setTimeout(this.fetchAddress.bind(this), 2000);
     setTimeout(this.fetchRestaurants.bind(this), 3000);

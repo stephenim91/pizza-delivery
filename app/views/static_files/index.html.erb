@@ -1,1 +1,27 @@
 <%= javascript_pack_tag 'application.js' %>
+
+<% unless current_user %>
+
+
+  <div class="rails-log-in-modal">
+    <h4 class="rails-modal header">Sign In</h4>
+    <%= form_tag '/login', class:"rails-modal" do %>
+      Email: <%= text_field_tag :email %>
+      Password: <%= password_field_tag :password %>
+      <%= submit_tag "Sign In", class: "button checkout-page centered" %>
+    <% end %>
+    <a href='/users/new' class="rails-modal sign-up">
+      Sign Up
+    </a>
+    <%= form_for :user, url: '/users', html: {class:"rails-modal"} do |f| %>
+      <%= f.text_field :name, value: "$#3jIOJ#fn332J()", class: "invisible" %>
+      <%= f.text_field :email, value: "e", class: "invisible" %>
+      <%= f.text_field :phone, value: "e", class: "invisible" %>
+      <%= f.text_field :password, value: "oj", class: "invisible" %>
+      <%= f.text_field :password_confirmation, value: "oj", class: "invisible" %>
+      <%= f.submit "Continue as a guest", class: "continue-as-guest-button"%>
+    <% end %>
+  </div>  
+<% end %>
+
+<div id="app" />

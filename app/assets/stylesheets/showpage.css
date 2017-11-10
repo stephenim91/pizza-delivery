@@ -4,6 +4,30 @@
   padding: 1rem;
   box-shadow: 3px 3px 3px #E5E5D8;
 }
+.show-page.restaurant-section {
+  background: #FFFEF5;
+  margin: 1rem;
+  margin-right: 0;
+  padding: 1rem;
+  box-shadow: 3px 3px 3px #E5E5D8;
+}
+
+.restaurant-info {
+  font-family: 'Arsenal';
+}
+
+.submitted-review-tile {
+  font-family: 'Arsenal';
+}
+
+.show-page.reviews-section {
+  background: #FFFEF5;
+  margin: 1rem;
+  margin-right: 0;
+  padding: 1rem;
+  margin-top: 2rem;
+  box-shadow: 3px 3px 3px #E5E5D8;
+}
 
 .submenu-tile {
   background: #FFFEF5;
@@ -42,6 +66,11 @@
   font-family: 'Arsenal';
 }
 
+.show-page-warning-text {
+  font-family: 'Arsenal';
+  color: #FF6B6B;
+}
+
 .submenu-title {
   font-family: 'Arsenal';
   font-size: 1.3rem;
@@ -52,4 +81,56 @@
 
 .submenu-title.active {
   font-style: italic;
+}
+
+.new-review-modal {
+}
+
+.firm-rating {
+  font-size: 1.7rem;
+}
+
+.rating {
+  font-size: 1.7rem;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+
+
+.rating-submitted {
+  font-size: 1.7rem;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+}
+
+
+.new-review-close-button {
+  margin-left: 14rem;
+}
+
+.button.checkout-page.new-review {
+  margin-left: 5rem;
+}
+.button.checkout-page.add-more {
+}
+.button.checkout-page.to-checkout {
+  margin-left: 4rem;
+}
+
+.submitted-review-tile-rating {
+  font-size: 1.2rem;
+  margin-top: -1rem;
+}
+
+.submitted-review-tile {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

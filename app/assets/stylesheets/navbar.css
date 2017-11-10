@@ -1,6 +1,6 @@
 .nav-bar-title {
-  font-family: 'Cabin Sketch';
-  font-size: 2rem;
+  font-family: 'Slackey';
+  font-size: 1.8rem;
   text-decoration: none;
   color: white;
   padding-left: 0.6rem;
@@ -27,5 +27,22 @@
 }
 
 .nav-bar-checkout:hover {
-  color: #85EE97;
+  /*color: #85EE97;*/
+  color: black;
+}
+
+.nav-bar-sign-in {
+  float: right;
+  padding-right: 1rem;
+  padding-top: 0.6rem;
+}
+
+.nav-bar-small-text {
+  font-family: 'Arsenal';
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.nav-bar-small-text:hover {
+  color: black;
 }

@@ -1,0 +1,24 @@
+<%= javascript_pack_tag 'application.js' %>
+
+<% unless current_user %>
+
+<div class="rails-sign-up-modal">
+  <h4 class="sign-up-header">Sign Up</h4>
+  <%= form_for :user, url: '/users', html: {class:"rails-modal"} do |f| %>
+    Name: <%= f.text_field :name %>
+    Email: <%= f.text_field :email %>
+    Phone Number: <%= f.text_field :phone %>
+    Password: <%= f.password_field :password %>
+    Password Confirmation: <%= f.password_field :password_confirmation %>
+    <%= f.submit "Sign Up", class: "button checkout-page centered"%>
+  <% end %>
+  <div class="rails-modal footer">
+  <a href='/' class="rails-modal footer">
+    Sign In
+  </a>
+</div>
+</div>
+<% end %>
+
+
+<div id="app" />

@@ -8,7 +8,7 @@ class CheckoutShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      orders: [{id: '', instruction: '', name: '', price: '', quantity: '', ordered: false, restaurant: ''}],
+      orders: [{id: '', instruction: '', name: '', price: 1, quantity: 1, ordered: false, restaurant: ''}],
       address: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -31,6 +31,13 @@ class CheckoutShow extends Component {
 
   render() {
     let error = 'There are no items in your cart.'
+    let sum = 0.0
+    let total = this.state.orders.forEach(order => {
+      sum = sum + (order.quantity * order.price)
+    })
+    sum = sum.toFixed(2)
+
+
     let orders = this.state.orders.map(order => {
       return(
         <CheckoutTile
@@ -53,7 +60,8 @@ class CheckoutShow extends Component {
           <h3 className="checkout-page-text header">Checkout</h3>
           <p className="checkout-page-text">Delivery to {this.state.address}</p>
           {orders}
-          <NavLink onClick={this.handleSubmit} className="button checkout-page" type="submit" to='/confirmation'>Proceed to Payment</NavLink>
+          <p className="checkout-tile">Your total is ${sum}</p>
+          <NavLink onClick={this.handleSubmit} className="button checkout-page" type="submit" to='/confirmation'>Order Now!</NavLink>
       </div>
       </div>
     )

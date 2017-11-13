@@ -20,7 +20,7 @@ class PaymentShow extends Component {
         <div className="checkout-page-nav-bar-buffer"></div>
         <div className="checkout-page-panel">
           <h3 className="checkout-page-text header">Payment Fetch has been disconnected!</h3>
-          <p className="checkout-page-text">I'm double checking to make sure everything is sanitized. ETA Early Sunday Morning<br />Everything will be hooked back up!w</p>
+          <p className="checkout-page-text">While I'm making sure everything is correctly sanitized. Should be back by early morning Monday.</p>
         </div>
       </div>
     )

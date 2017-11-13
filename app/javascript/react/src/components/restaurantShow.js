@@ -35,7 +35,8 @@ class RestaurantShow extends Component {
       reviewBody: '',
       reviewSubmitError: '',
       reviews: [{rating: '', description: '', username: '', restaurant: '', id: 'initial', created_at: ''}],
-      ratingAvg: 0
+      ratingAvg: 0,
+      guest: true
 
     }
     this.handleReviewModal = this.handleReviewModal.bind(this);
@@ -59,6 +60,16 @@ class RestaurantShow extends Component {
       let restaurant = body.restaurant
       this.setState({ taxRate: restaurant.taxRate, hours: restaurant.hours, deliveryPrice: restaurant.deliveryPrice, deliveryMin: restaurant.deliveryMin, logoUrl: restaurant.logoUrl, restaurantApiKey: restaurant.apiKey, restaurantName: restaurant.name })
     })
+    fetch(`/api/v1/users.json`,
+      {credentials: "same-origin",
+      headers: {"Content-Type": "application/json"}})
+      .then(response => response.json())
+      .then(body => {
+        if(body.email != "$oij233f09jf2n%23jj2323h$9h23") {
+          this.setState({ guest: false })
+        }
+
+      })
     fetch(`/api/v1/reviews.json`,
       {credentials: "same-origin",
       headers: {"Content-Type": "application/json"}})
@@ -203,6 +214,12 @@ class RestaurantShow extends Component {
       fourFirmStar = '★'
       fiveFirmStar = '★'
     }
+
+    let reviewButtonText = <button className="button checkout-page" onClick={this.handleReviewModal}>Add a New Review</button>
+
+    if(this.state.guest) {
+      reviewButtonText = <a className ="button checkout-page" href='/logout'>Sign In to Add a Reiew</a>
+    }
     return(
       <div>
         <div className="show-page-nav-bar-buffer"></div>
@@ -224,8 +241,7 @@ class RestaurantShow extends Component {
                   <span>{oneFirmStar}</span><span>{twoFirmStar}</span><span>{threeFirmStar}</span><span>{fourFirmStar}</span><span>{fiveFirmStar}</span>
                 </div>
                 <div>
-                  <button className="button checkout-page" onClick={this.handleReviewModal}>Add a New Review</button>
-
+                  {reviewButtonText}
                   <Modal isOpen={this.state.reviewModalIsOpen} style={modalParameters}>
                     <div className="new-review-modal">
                     <div className="fa fa-times new-review-close-button" onClick={this.handleReviewModal}></div>

@@ -9,7 +9,9 @@ class Api::V1::OrdersController < ApplicationController
     addresses = Address.where(user: current_user)
     address = addresses.last
     orders = Order.where(address: address, ordered: false)
-    checkout = {address: address.longform_address, orders: orders}
+    restaurant_patch = orders.last.restaurant
+    orders = Order.where(address: address, ordered: false, restaurant: restaurant_patch)
+    checkout = {username: current_user.name, email: current_user.email, phone: current_user.phone, address: address.longform_address, latitude: address.latitude, longitude: address.longitude, orders: orders}
     render json: checkout
   end
 
@@ -24,7 +26,7 @@ class Api::V1::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:instruction, :name, :price, :quantity, :restaurant)
+    params.require(:order).permit(:instruction, :name, :price, :quantity, :restaurant, :item_api)
   end
 
 end

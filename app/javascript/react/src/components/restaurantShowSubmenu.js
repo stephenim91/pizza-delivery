@@ -45,6 +45,7 @@ class RestaurantShowSubmenu extends Component {
         return(
           <RestaurantShowSubmenuItem
             key={item.apiKey}
+            itemApi={item.apiKey}
             name={item.name}
             description={item.description}
             price={item.basePrice.toFixed(2)}
@@ -91,7 +92,7 @@ class RestaurantShowSubmenuItem extends Component {
 
   handleAdd(event) {
     event.preventDefault;
-    let payload = {instruction: this.state.instruction, name: this.props.name, price: this.props.price, quantity: this.state.quantity, restaurant: this.props.restaurantApiKey}
+    let payload = {instruction: this.state.instruction, item_api: this.props.itemApi, name: this.props.name, price: this.props.price, quantity: this.state.quantity, restaurant: this.props.restaurantApiKey}
     fetch(`/api/v1/orders.json`, {
       method: "POST",
       body: JSON.stringify(payload),

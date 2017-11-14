@@ -19,8 +19,8 @@ class PaymentShow extends Component {
       <div>
         <div className="checkout-page-nav-bar-buffer"></div>
         <div className="checkout-page-panel">
-          <h3 className="checkout-page-text header">Payment Fetch has been disconnected!</h3>
-          <p className="checkout-page-text">While I'm making sure everything is correctly sanitized. Should be back by early morning Monday.</p>
+          <h3 className="checkout-page-text header">Your Order Has Been Processed!</h3>
+          <p className="checkout-page-text">You should be receiving an email confirmation of your order!</p>
         </div>
       </div>
     )

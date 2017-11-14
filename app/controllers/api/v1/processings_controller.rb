@@ -53,8 +53,20 @@ class Api::V1::ProcessingsController < ApplicationController
     response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
       http.request(request)
     end
-  # response.code
-  # response.body
+
+    message = ''
+    if response.code == 200
+      message = {error: false, details: 'You Order Has Been Processed'}
+      items.each do |item|
+        order = Order.find(item[:id])
+        order.ordered = true
+      end
+
+    else
+      message = response.body
+    end
+
+    render json: message
   end
 
   def processing_params

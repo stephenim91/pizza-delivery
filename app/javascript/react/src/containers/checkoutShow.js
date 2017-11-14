@@ -68,6 +68,10 @@ class CheckoutShow extends Component {
       headers: {"Content-Type": "application/json"}})
       .then(response => response.json())
       .then(body => {
+        if(body.error) {
+          alert(`Sorry. Your order could not be processed. ${body.details}`)
+
+        }
       })
   }
 

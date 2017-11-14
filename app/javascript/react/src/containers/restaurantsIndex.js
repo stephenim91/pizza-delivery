@@ -11,7 +11,7 @@ class RestaurantsIndex extends Component {
       longform_address: '',
       latitude: '',
       longitude: '',
-      restaurants: [{taxrate: '', hours: '', deliveryPrice: '', deliveryMin: '', logoUrl: '', name: '', apiKey: ''}]
+      restaurants: [{acceptsCash: true, taxrate: '', hours: '', deliveryPrice: '', deliveryMin: '', logoUrl: '', name: '', apiKey: ''}]
     }
   }
 
@@ -47,7 +47,9 @@ class RestaurantsIndex extends Component {
   }
 
   render() {
-    let restaurants = this.state.restaurants.map(restaurant => {
+    let filtered_restaurants = this.state.restaurants.filter(restaurant => restaurant.acceptsCash == true )
+    debugger;
+    let restaurants = filtered_restaurants.map(restaurant => {
       return(
         <RestaurantTile
           key={restaurant.apiKey}

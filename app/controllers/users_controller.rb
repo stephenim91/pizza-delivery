@@ -13,9 +13,14 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       user = User.new(user_params)
-      if user.save
-        session[:user_id] = user.id
-        redirect_to '/'
+      if User.where(email: user_params[:email]).length < 1
+        if user.save
+          session[:user_id] = user.id
+          redirect_to '/'
+        else
+          session[:user_id] = nil
+          redirect_to '/'
+        end
       else
         session[:user_id] = nil
         redirect_to '/'

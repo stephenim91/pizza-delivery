@@ -2,16 +2,42 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import CheckoutTile from '../components/checkoutTile'
 
+import Modal from 'react-modal';
 
+
+const modalParameters = {
+  content : {
+    top: '40%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  }
+};
 
 class CheckoutShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      orders: [{id: '', instruction: '', name: '', price: 1, quantity: 1, ordered: false, restaurant: ''}],
-      address: ''
+      orders: [{id: '', instruction: '', name: '', price: 1, quantity: 1, ordered: false, restaurant: '', itemApi: ''}],
+      address: '',
+      latitude: '',
+      longitude: '',
+      comments: '',
+      email: '',
+      phone: '',
+      username: '',
+      guestName: '',
+      guestEmail: '',
+      guestPhone: '',
+      guestInfoSubmitError: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleModal = this.handleModal.bind(this)
+    this.handleGuestName = this.handleGuestName.bind(this)
+    this.handleGuestEmail = this.handleGuestEmail.bind(this)
+    this.handleGuestPhone = this.handleGuestPhone.bind(this)
   }
 
   componentDidMount() {
@@ -20,16 +46,55 @@ class CheckoutShow extends Component {
       headers: {"Content-Type": "application/json"}})
       .then(response => response.json())
       .then(body => {
-        this.setState({ address: body.address, orders: body.orders })
+        this.setState({ username: body.username, email: body.email, phone: body.phone, address: body.address, latitude: body.latitude, longitude: body.longitude, orders: body.orders })
       })
   }
 
   handleSubmit(event) {
-
+    fetch(`/api/v1/processings.json`, {
+      method: "POST",
+      body: JSON.stringify({
+        "restaurant_api_key": this.state.orders[0].restaurant,
+        "items": this.state.orders,
+        "comments": this.state.comments,
+        "address": this.state.address,
+        "latitude": this.state.latitude,
+        "longitude": this.state.longitude,
+        "email": this.state.email,
+        "phone": this.state.phone,
+        "username": this.state.username
+      }),
+      credentials: "same-origin",
+      headers: {"Content-Type": "application/json"}})
+      .then(response => response.json())
+      .then(body => {
+      })
   }
 
+  handleModal(event) {
+    event.preventDefault();
+    if(this.state.guestName == '' || this.state.guestEmail == '' || this.state.guestPhone == '') {
+      this.setState({ guestInfoSubmitError: "Please complete all fields"})
+    } else {
+      this.setState({ username: this.state.guestName, email: this.state.guestEmail, phone: this.state.guestPhone})
+    }
+  }
+
+  handleGuestName(event) {
+    this.setState({ guestName: event.target.value })
+  }
+  handleGuestEmail(event) {
+    this.setState({ guestEmail: event.target.value })
+  }
+  handleGuestPhone(event) {
+    this.setState({ guestPhone: event.target.value })
+  }
 
   render() {
+    let isOpen = false
+    if(this.state.username == "guest5%4232#1*53ng#D") {
+      isOpen = true
+    }
     let error = 'There are no items in your cart.'
     let sum = 0.0
     let total = this.state.orders.forEach(order => {
@@ -63,6 +128,28 @@ class CheckoutShow extends Component {
           <p className="checkout-tile">Your total is ${sum}</p>
           <NavLink onClick={this.handleSubmit} className="button checkout-page" type="submit" to='/confirmation'>Order Now!</NavLink>
       </div>
+
+
+      <Modal isOpen={isOpen} style={modalParameters}>
+        <div className="new-review-modal">
+        <h4 className="show-page-header">Enter Your Contact Information</h4>
+        <p className="show-page-warning-text">{this.state.guestInfoSubmitError}</p>
+          <label>
+            Name:
+            <input onChange={this.handleGuestName} className="new-review-text-area" type="text" />
+          </label>
+          <label>
+            Email:
+            <input onChange={this.handleGuestEmail} className="new-review-text-area" type="text" />
+          </label>
+          <label>
+            Phone:
+            <input onChange={this.handleGuestPhone} className="new-review-text-area" type="text" />
+          </label>
+          <button className="button checkout-page new-review" type="submit" onClick={this.handleModal}>Submit</button>
+      </div>
+      </Modal>
+
       </div>
     )
   }

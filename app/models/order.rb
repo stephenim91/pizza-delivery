@@ -5,4 +5,5 @@ class Order < ApplicationRecord
   validates :price, presence: true
   validates :quantity, presence: true
   validates :restaurant, presence: true
+  validates :item_api, presence: true
 end

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         redirect_to '/'
       else
-        session[:user_id] = 'cannot create'
+        session[:user_id] = nil
         redirect_to '/'
       end
     end

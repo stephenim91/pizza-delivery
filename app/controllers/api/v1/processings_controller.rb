@@ -17,8 +17,7 @@ class Api::V1::ProcessingsController < ApplicationController
       end
     end
     token = ENV["REACT_APP_EAT_STREET_TOKEN"]
-    binding.pry
-    uri = URI.parse("https://api.eatstreet.com/publicapi/v1/send-order")
+r    uri = URI.parse("https://api.eatstreet.com/publicapi/v1/send-order")
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/json"
     request["X-Access-Token"] = token
@@ -54,7 +53,6 @@ class Api::V1::ProcessingsController < ApplicationController
     response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
       http.request(request)
     end
-    binding.pryr
 
   # response.code
   # response.body

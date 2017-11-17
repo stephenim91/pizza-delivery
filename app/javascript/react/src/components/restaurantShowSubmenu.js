@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { NavLink } from 'react-router-dom'
 
 
+
 const modalParameters = {
   content : {
     top: '30%',
@@ -14,7 +15,6 @@ const modalParameters = {
   }
 };
 
-
 class RestaurantShowSubmenu extends Component {
   constructor(props) {
     super(props)
@@ -24,7 +24,6 @@ class RestaurantShowSubmenu extends Component {
     this.handleActivity = this.handleActivity.bind(this);
   }
   componentDidMount() {
-    // $(document).foundation();
   }
 
   handleActivity(event) {
@@ -35,7 +34,6 @@ class RestaurantShowSubmenu extends Component {
       this.setState({ active: true })
     }
   }
-  // <a onClick={this.handleActivity} href="#" className={`accordion-title ${activity}`}>{this.props.name}</a>
 
   render() {
     let activity = ''

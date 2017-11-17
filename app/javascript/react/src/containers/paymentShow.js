@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 
+
 class PaymentShow extends Component {
   constructor(props) {
     super(props)
@@ -10,9 +11,6 @@ class PaymentShow extends Component {
 
   componentDidMount() {
   }
-
-
-
 
   render() {
     return(

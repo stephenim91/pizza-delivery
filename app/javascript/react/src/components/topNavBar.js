@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-// import $ from 'jquery'
-// import 'foundation-sites'
 import { Redirect } from 'react-router-dom'
+
 
 
 class TopNavBar extends Component {
@@ -10,8 +9,8 @@ class TopNavBar extends Component {
     this.state = {
     }
   }
+  
   componentDidMount() {
-
   }
 
   render() {
@@ -24,12 +23,8 @@ class TopNavBar extends Component {
       <span className="nav-bar-sign-in">
         <a className="nav-bar-small-text" href='/logout'>{this.props.navBarText}</a>
       </span>
-
-
     </div>
-
     )
   }
-
 }
 export default TopNavBar

@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import $ from 'jquery'
-// import 'foundation-sites'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import { NavLink } from 'react-router-dom'
 
@@ -18,7 +16,6 @@ class SearchBar extends Component {
   }
 
   componentDidMount() {
-    // $(document).foundation();
   }
 
   handleChange(address) {
@@ -38,7 +35,6 @@ class SearchBar extends Component {
         })
       })
       .catch(error => console.error('Error', error))
-
   }
 
   render() {

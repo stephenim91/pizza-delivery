@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-// import $ from 'jquery'
 import RestaurantTile from '../components/restaurantTile'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
 
 
 class RestaurantsIndex extends Component {
@@ -16,9 +16,6 @@ class RestaurantsIndex extends Component {
   }
 
   componentDidMount() {
-
-
-    // $(document).foundation();
     setTimeout(this.fetchAddress.bind(this), 2000);
     setTimeout(this.fetchRestaurants.bind(this), 3000);
   }
@@ -63,7 +60,6 @@ class RestaurantsIndex extends Component {
       <div>
         <div className="index-page-nav-bar-buffer"></div>
         {restaurants}
-
       </div>
     )
   }

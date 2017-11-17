@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import CheckoutTile from '../components/checkoutTile'
-
 import Modal from 'react-modal';
+
 
 
 const modalParameters = {
@@ -70,7 +70,6 @@ class CheckoutShow extends Component {
       .then(body => {
         if(body.error) {
           alert(`Sorry. Your order could not be processed. ${body.details}`)
-
         }
       })
   }
@@ -106,7 +105,6 @@ class CheckoutShow extends Component {
     })
     sum = sum.toFixed(2)
 
-
     let orders = this.state.orders.map(order => {
       return(
         <CheckoutTile
@@ -132,7 +130,6 @@ class CheckoutShow extends Component {
           <p className="checkout-tile">Your total is ${sum}</p>
           <NavLink onClick={this.handleSubmit} className="button checkout-page" type="submit" to='/confirmation'>Order Now!</NavLink>
       </div>
-
 
       <Modal isOpen={isOpen} style={modalParameters}>
         <div className="new-review-modal">

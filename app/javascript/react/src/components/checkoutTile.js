@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
+
+
 class CheckoutTile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
     }
   }
 
   componentDidMount() {
-    // $(document).foundation();
   }
 
   render() {

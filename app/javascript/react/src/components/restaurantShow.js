@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import RestaurantShowSubmenu from './restaurantShowSubmenu'
-// import $ from 'jquery'
 import Modal from 'react-modal';
 import SubmittedReviewTile from './submittedReviewTile'
+
 
 
 const modalParameters = {
@@ -15,8 +15,6 @@ const modalParameters = {
     transform: 'translate(-50%, -50%)',
   }
 };
-
-
 
 class RestaurantShow extends Component {
   constructor(props) {
@@ -37,7 +35,6 @@ class RestaurantShow extends Component {
       reviews: [{rating: '', description: '', username: '', restaurant: '', id: 'initial', created_at: ''}],
       ratingAvg: 0,
       guest: true
-
     }
     this.handleReviewModal = this.handleReviewModal.bind(this);
     this.handleStarClick = this.handleStarClick.bind(this);
@@ -68,7 +65,6 @@ class RestaurantShow extends Component {
         if(body.email != "$oij233f09jf2n%23jj2323h$9h23") {
           this.setState({ guest: false })
         }
-
       })
     fetch(`/api/v1/reviews.json`,
       {credentials: "same-origin",
@@ -85,9 +81,7 @@ class RestaurantShow extends Component {
           count += 1;
          })
          let ratingAvg = Math.round(ratingSum / count)
-         if(ratingAvg == NaN) {
-           rating=Avg = 0
-         }
+         if(ratingAvg == NaN) {rating=Avg = 0}
         this.setState({reviews: reversedReviews, ratingAvg: ratingAvg })
       })
   }
@@ -117,7 +111,6 @@ class RestaurantShow extends Component {
         .then(body => {
           this.setState({reviews: [...this.state.reviews, body]})
         })
-
       this.setState({ starSubmittedValue: 0, reviewBody: '', reviewSubmitError: '', reviewModalIsOpen: false})
     }
   }
@@ -187,6 +180,7 @@ class RestaurantShow extends Component {
       fourStar = '★'
       fiveStar = '★'
     }
+
     let oneFirmStar = '☆'
     let twoFirmStar = '☆'
     let threeFirmStar = '☆'
@@ -272,12 +266,10 @@ class RestaurantShow extends Component {
           </div>
           </div>
 
-
           <div className="show-page menu-section small-6 column">
             <h3 className="show-page-header">Menu</h3>
             {products}
           </div>
-
 
         </div>
       </div>

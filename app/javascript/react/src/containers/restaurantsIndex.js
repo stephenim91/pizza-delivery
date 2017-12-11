@@ -45,7 +45,6 @@ class RestaurantsIndex extends Component {
 
   render() {
     let filtered_restaurants = this.state.restaurants.filter(restaurant => restaurant.acceptsCash == true )
-    debugger;
     let restaurants = filtered_restaurants.map(restaurant => {
       return(
         <RestaurantTile
@@ -55,6 +54,9 @@ class RestaurantsIndex extends Component {
           apiKey={restaurant.apiKey} />
       )
     })
+    if (this.state.restaurants.length == 0) {
+      restaurants = <RestaurantTile name="No restaurants could be found for this address" />
+    }
 
     return(
       <div>

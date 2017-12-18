@@ -14,18 +14,20 @@ class RestaurantTile extends Component {
   }
 
   render() {
-    return(
-      <div>
-        <div className="row restaurant-tile">
-          <div className="small-6 large-3 column">
-            <img src={this.props.logoUrl}></img>
-          </div>
-          <div className="small-6 large-3 column">
-            <NavLink className="index-page restaurant-name" to={`/restaurants/${this.props.apiKey}`}>{this.props.name}</NavLink>
+
+      return(
+        <div>
+          <div className="row restaurant-tile">
+            <div className="small-6 large-3 column">
+              <img src={this.props.logoUrl}></img>
+            </div>
+            <div className="small-6 large-3 column">
+              <NavLink className="index-page restaurant-name" to={`/restaurants/${this.props.apiKey}`}>{this.props.name}</NavLink>
+            </div>
           </div>
         </div>
-      </div>
-    )
+      )
+
   }
 }
 

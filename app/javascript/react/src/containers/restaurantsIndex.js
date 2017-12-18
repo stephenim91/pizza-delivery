@@ -55,7 +55,7 @@ class RestaurantsIndex extends Component {
       )
     })
     if (this.state.restaurants.length == 0) {
-      restaurants = <RestaurantTile name="No restaurants could be found for this address" />
+      restaurants = <ErrorTile name="No nearby restaurants" />
     }
 
     return(
@@ -64,6 +64,26 @@ class RestaurantsIndex extends Component {
         {restaurants}
       </div>
     )
+  }
+}
+
+class ErrorTile extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+    }
+  }
+
+  render() {
+
+      return(
+        <div>
+          <div className="error row restaurant-tile">
+            <p>No nearby restaurants could be found for this address. :(</p>
+        </div>
+        </div>
+      )
+
   }
 }
 

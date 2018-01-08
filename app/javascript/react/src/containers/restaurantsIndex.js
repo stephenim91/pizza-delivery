@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import RestaurantTile from '../components/restaurantTile'
+import ErrorTile from '../components/errorTile'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 
@@ -55,36 +56,25 @@ class RestaurantsIndex extends Component {
       )
     })
     if (this.state.restaurants.length == 0) {
-      restaurants = <ErrorTile name="No nearby restaurants" />
-    }
-
-    return(
-      <div>
-        <div className="index-page-nav-bar-buffer"></div>
-        {restaurants}
-      </div>
-    )
-  }
-}
-
-class ErrorTile extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-    }
-  }
-
-  render() {
-
       return(
         <div>
-          <div className="error row restaurant-tile">
-            <p>No nearby restaurants could be found for this address. :(</p>
+        <div className="index-page-nav-bar-buffer"></div>
+        <ErrorTile name="No nearby restaurants could be found for this address. :(" />
         </div>
+      )
+    } else {
+      return(
+        <div>
+        <div className="index-page-nav-bar-buffer"></div>
+        {restaurants}
         </div>
       )
 
+    }
+
   }
 }
+
+
 
 export default RestaurantsIndex

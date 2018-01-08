@@ -22,11 +22,10 @@ class SearchBar extends Component {
     this.setState({ address: address })
   }
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     geocodeByAddress(this.state.address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
-        // console.log('Success', latLng);
         fetch(`/api/v1/addresses.json`, {
           method: "POST",
           body: JSON.stringify({longform_address: this.state.address, latitude: latLng.lat, longitude: latLng.lng}),
@@ -34,7 +33,7 @@ class SearchBar extends Component {
           headers: {"Content-Type": "application/json"}
         })
       })
-      // .catch(error => console.error('Error', error))
+      .catch(error => console.error('Error', error))
   }
 
   render() {

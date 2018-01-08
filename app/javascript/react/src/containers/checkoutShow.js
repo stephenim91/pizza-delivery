@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import CheckoutTile from '../components/checkoutTile'
-
+import ErrorTile from '../components/errorTile'
 import Modal from 'react-modal';
+
 
 
 const modalParameters = {
@@ -20,7 +21,7 @@ class CheckoutShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      orders: [{id: '', instruction: '', name: '', price: 1, quantity: 1, ordered: false, restaurant: '', itemApi: ''}],
+      orders: [{id: 'we45#*32lk2EFEn3q', instruction: '', name: 'we45#*32lk2EFEn3q', price: 1, quantity: 1, ordered: false, restaurant: '', itemApi: ''}],
       address: '',
       latitude: '',
       longitude: '',
@@ -70,7 +71,6 @@ class CheckoutShow extends Component {
       .then(body => {
         if(body.error) {
           alert(`Sorry. Your order could not be processed. ${body.details}`)
-
         }
       })
   }
@@ -105,20 +105,28 @@ class CheckoutShow extends Component {
       sum = sum + (order.quantity * order.price)
     })
     sum = sum.toFixed(2)
-
-
-    let orders = this.state.orders.map(order => {
+    let orders = []
+    if (this.state.orders.length == 1 && this.state.orders[0].id == "we45#*32lk2EFEn3q") {
       return(
-        <CheckoutTile
-        key={order.id}
-        id={order.id}
-        name={order.name}
-        price={order.price}
-        quantity={order.quantity}
-        instruction={order.instruction}
-        restaurant={order.restaurant} />
+        <div>
+        <div className="index-page-nav-bar-buffer"></div>
+        <ErrorTile name="There are no items in your cart." />
+        </div>
       )
-    })
+    } else {
+      let orders = this.state.orders.map(order => {
+        return(
+          <CheckoutTile
+          key={order.id}
+          id={order.id}
+          name={order.name}
+          price={order.price}
+          quantity={order.quantity}
+          instruction={order.instruction}
+          restaurant={order.restaurant} />
+        )
+      })
+    }
 
     let restaurant
 
@@ -132,7 +140,6 @@ class CheckoutShow extends Component {
           <p className="checkout-tile">Your total is ${sum}</p>
           <NavLink onClick={this.handleSubmit} className="button checkout-page" type="submit" to='/confirmation'>Order Now!</NavLink>
       </div>
-
 
       <Modal isOpen={isOpen} style={modalParameters}>
         <div className="new-review-modal">

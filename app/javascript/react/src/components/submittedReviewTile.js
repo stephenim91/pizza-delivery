@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import Moment from 'react-moment';
+
+
+
 Moment.globalFormat = 'D MMM YYYY';
 
 class SubmittedReviewTile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
     }
   }
 
   componentDidMount() {
-    // $(document).foundation();
   }
 
   render() {
@@ -42,7 +43,9 @@ class SubmittedReviewTile extends Component {
       fourStar = '★'
       fiveStar = '★'
     }
+
     let date = <Moment>{this.props.date}</Moment>
+
     return(
       <div className="submitted-review-tile">
       <p className=""><strong>{this.props.username}</strong> - <i>{date}</i></p>
@@ -52,7 +55,6 @@ class SubmittedReviewTile extends Component {
       <p>{this.props.body}</p>
       </div>
     )
-
   }
 }
 

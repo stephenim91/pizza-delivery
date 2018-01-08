@@ -27,3 +27,7 @@
 .index-page.restaurant-name:hover {
   text-decoration: underline;
 }
+
+.error.row.restaurant-tile {
+  text-align: center;
+}

@@ -9,6 +9,7 @@ import PaymentShow from './containers/paymentShow'
 import Modal from 'react-modal';
 
 
+
 const modalParameters = {
   content : {
     top: '45%',

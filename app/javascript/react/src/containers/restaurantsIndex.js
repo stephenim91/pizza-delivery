@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-// import $ from 'jquery'
 import RestaurantTile from '../components/restaurantTile'
+import ErrorTile from '../components/errorTile'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
 
 
 class RestaurantsIndex extends Component {
@@ -16,9 +17,6 @@ class RestaurantsIndex extends Component {
   }
 
   componentDidMount() {
-
-
-    // $(document).foundation();
     setTimeout(this.fetchAddress.bind(this), 2000);
     setTimeout(this.fetchRestaurants.bind(this), 3000);
   }
@@ -48,7 +46,6 @@ class RestaurantsIndex extends Component {
 
   render() {
     let filtered_restaurants = this.state.restaurants.filter(restaurant => restaurant.acceptsCash == true )
-    debugger;
     let restaurants = filtered_restaurants.map(restaurant => {
       return(
         <RestaurantTile
@@ -58,15 +55,26 @@ class RestaurantsIndex extends Component {
           apiKey={restaurant.apiKey} />
       )
     })
-
-    return(
-      <div>
+    if (this.state.restaurants.length == 0) {
+      return(
+        <div>
+        <div className="index-page-nav-bar-buffer"></div>
+        <ErrorTile name="No nearby restaurants could be found for this address. :(" />
+        </div>
+      )
+    } else {
+      return(
+        <div>
         <div className="index-page-nav-bar-buffer"></div>
         {restaurants}
+        </div>
+      )
 
-      </div>
-    )
+    }
+
   }
 }
+
+
 
 export default RestaurantsIndex

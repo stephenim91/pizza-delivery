@@ -109,7 +109,7 @@ class RestaurantShow extends Component {
         headers: {"Content-Type": "application/json"}})
         .then(response => response.json())
         .then(body => {
-          this.setState({reviews: [...this.state.reviews, body]})
+          this.setState({reviews: [body, ...this.state.reviews]})
         })
       this.setState({ starSubmittedValue: 0, reviewBody: '', reviewSubmitError: '', reviewModalIsOpen: false})
     }

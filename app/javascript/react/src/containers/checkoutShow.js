@@ -105,6 +105,7 @@ class CheckoutShow extends Component {
       sum = sum + (order.quantity * order.price)
     })
     sum = sum.toFixed(2)
+
     let orders = []
     if (this.state.orders.length == 1 && this.state.orders[0].id == "we45#*32lk2EFEn3q") {
       return(
@@ -114,7 +115,7 @@ class CheckoutShow extends Component {
         </div>
       )
     } else {
-      let orders = this.state.orders.map(order => {
+      orders = this.state.orders.map(order => {
         return(
           <CheckoutTile
           key={order.id}

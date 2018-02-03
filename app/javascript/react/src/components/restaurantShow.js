@@ -23,7 +23,6 @@ class RestaurantShow extends Component {
       menu: [{key: 'static', name: '', items: [{name: '', description: '', apiKey: ''}]}],
       taxRate: '',
       hours: '',
-      deliveryPrice: '',
       deliveryMin: '',
       logoUrl: '',
       restaurantName: '',
@@ -55,7 +54,7 @@ class RestaurantShow extends Component {
     .then(response => response.json())
     .then(body => {
       let restaurant = body.restaurant
-      this.setState({ taxRate: restaurant.taxRate, hours: restaurant.hours, deliveryPrice: restaurant.deliveryPrice, deliveryMin: restaurant.deliveryMin, logoUrl: restaurant.logoUrl, restaurantApiKey: restaurant.apiKey, restaurantName: restaurant.name })
+      this.setState({ taxRate: restaurant.taxRate, hours: restaurant.hours, deliveryMin: restaurant.minFreeDelivery, logoUrl: restaurant.logoUrl, restaurantApiKey: restaurant.apiKey, restaurantName: restaurant.name })
     })
     fetch(`/api/v1/users.json`,
       {credentials: "same-origin",
@@ -136,18 +135,18 @@ class RestaurantShow extends Component {
       )
     })
 
-    let deliveryFee = this.state.deliveryPrice
-    if (deliveryFee == undefined) {
-      deliveryFee = 'Free'
-    } else {
-      deliveryFee = `Fee. $${deliveryFee}`
-    }
+    // let deliveryFee = this.state.deliveryPrice
+    // if (deliveryFee == undefined) {
+    //   deliveryFee = 'Free'
+    // } else {
+    //   deliveryFee = `Fee. $${deliveryFee}`
+    // }
 
     let deliveryMin = this.state.deliveryMin
     if (deliveryMin == '') {
-      deliveryMin = 'No Minimum'
+      deliveryMin = 'Free Delivery'
     } else {
-      deliveryMin = `Min. $${deliveryMin}`
+      deliveryMin = `Free Delivery for $${deliveryMin}`
     }
     let oneStar = '☆'
     let twoStar = '☆'
@@ -230,7 +229,7 @@ class RestaurantShow extends Component {
                 <img src={this.state.logoUrl}></img>
               </div>
               <div className="small-6 column">
-                <p className="restaurant-info">Delivery {deliveryFee} | {deliveryMin}</p>
+                <p className="restaurant-info">{deliveryMin}</p>
                 <div className="firm-rating">
                   <span>{oneFirmStar}</span><span>{twoFirmStar}</span><span>{threeFirmStar}</span><span>{fourFirmStar}</span><span>{fiveFirmStar}</span>
                 </div>

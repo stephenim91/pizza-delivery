@@ -27,6 +27,26 @@ class Api::V1::OrdersController < ApplicationController
     order.save
   end
 
+  def update
+    addresses = Address.where(user: current_user)
+    address = addresses.last
+    order = Order.where(address: address)
+    if order.last
+      order.destroy(order.last.id)
+    end
+
+    orders = Order.where(address: address, ordered: false)
+    if orders.length == 0
+      orders = [{id: 'we45#*32lk2EFEn3q'}]
+    else
+      restaurant_patch = orders.last.restaurant
+      orders = Order.where(address: address, ordered: false, restaurant: restaurant_patch)
+    end
+
+    render json: orders
+  end
+
+
   private
 
   def order_params

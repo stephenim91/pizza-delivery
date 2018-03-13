@@ -25,6 +25,8 @@ class CheckoutTile extends Component {
         <div className="small-2 column">
           <p>${this.props.price}</p>
         </div>
+        <span onClick={this.props.handleDelete} title={this.props.id} className="fa fa-trash"></span>
+
       </div>
     )
   }

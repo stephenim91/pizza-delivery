@@ -39,6 +39,7 @@ class CheckoutShow extends Component {
     this.handleGuestName = this.handleGuestName.bind(this)
     this.handleGuestEmail = this.handleGuestEmail.bind(this)
     this.handleGuestPhone = this.handleGuestPhone.bind(this)
+    this.handleItemDelete = this.handleItemDelete.bind(this)
   }
 
   componentDidMount() {
@@ -93,6 +94,20 @@ class CheckoutShow extends Component {
   handleGuestPhone(event) {
     this.setState({ guestPhone: event.target.value })
   }
+  handleItemDelete(event) {
+    event.preventDefault();
+    let itemId = event.target.title
+    fetch(`/api/v1/orders/${itemId}.json`, {
+      method: "PATCH",
+      body: JSON.stringify({"id": itemId}),
+      credentials: "same-origin",
+      headers: {"Content-Type": "application/json"}
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({ orders: body})
+    })
+  }
 
   render() {
     let isOpen = false
@@ -124,7 +139,8 @@ class CheckoutShow extends Component {
           price={order.price}
           quantity={order.quantity}
           instruction={order.instruction}
-          restaurant={order.restaurant} />
+          restaurant={order.restaurant}
+          handleDelete={this.handleItemDelete} />
         )
       })
     }
